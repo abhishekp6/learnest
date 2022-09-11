@@ -8,15 +8,14 @@ const baseStyle = {
     alignItems: 'center',
     padding: '20px',
     borderWidth: 2,
-    borderRadius: 2,
+    borderRadius: '20px',
     borderColor: '#eeeeee',
     borderStyle: 'dashed',
     backgroundColor: '#fafafa',
     color: '#bdbdbd',
     transition: 'border .3s ease-in-out',
-    width: '50%',
-    height: '200px',
-    borderRadius: '20px'
+    width: '20%',
+    height: '60px'
   };
   
   const activeStyle = {
@@ -57,8 +56,8 @@ const Upload = () => {
                 <input {...getInputProps()} />
                     {
                         isDragActive ?
-                        <p>Drop the files here ...</p> :
-                        <p>Drag 'n' drop some files here, or click to select files</p>
+                        <p>Drop ....</p> :
+                        <p>Drag File Here ....</p>
                     }
                 </div>
         </div>

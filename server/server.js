@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const logger = require('./middleware/logger');
 const dbConnection = require('./config/dbconn');
 const cors = require('cors');
+const apiRoutes = require('./routes/routes');
 
 // Load env Vars
 dotenv.config({path: './config/config.env'});
@@ -26,6 +27,9 @@ dbConnection();
 
 // Log requests
 app.use(logger);
+
+// Mount Router
+app.use('/api/v1', apiRoutes);
 
 const PORT = process.env.PORT || 5000;
 
