@@ -23,16 +23,19 @@ const AddCourse = () => {
         setChapter(chapterList);
     }
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log("Submit Pressed")
+    }
+
     return(
-        <div>
+        <form onSubmit={handleSubmit}>
             {
                 chapter.map((element, index) => {
                     return(
                         <div key={index}>
-                            <form>
-                                <input value={element.title} name="title" onChange={(event) => {onFormInput(index, event)}} placeholder="Add Title"></input>
-                                <input value={element.description} name="description" onChange={(event) => {onFormInput(index, event)}} placeholder="Add Chapter Description"></input>
-                            </form>
+                            <input value={element.title} name="title" onChange={(event) => {onFormInput(index, event)}} placeholder="Add Title"></input>
+                            <input value={element.description} name="description" onChange={(event) => {onFormInput(index, event)}} placeholder="Add Chapter Description"></input>
                             <VideoUploadButton />
                             <button onClick={() => {removeChapter(index)}}>Remove Form Field</button>
                         </div>
@@ -40,7 +43,8 @@ const AddCourse = () => {
                 })
             }
             <button onClick={() => {addChapter()}}>Add Chapter</button>
-        </div>
+            <button type="submit" placeholder="Submit">Submit</button>
+        </form>
     );
 }
 
