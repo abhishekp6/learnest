@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { getUploadToken, saveVideo } = require('../controllers/handleVideoUpload')
+const { getUploadToken, getVideoUrl } = require('../controllers/handleVideoUpload')
 
 // @ ALL Routes
 router.route('/get/token/upload').post(getUploadToken);
-router.route('/save/video/url').get(saveVideo);
+router.route('/get/video/url').post(getVideoUrl);
 
 module.exports = router;

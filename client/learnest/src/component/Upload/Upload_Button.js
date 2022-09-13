@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Crypt, RSA } from 'hybrid-crypto-js';
 import environment from "../../config/Config";
 
-const VideoUploadButton = () => {
+const VideoUploadButton = (prop) => {
 
     const [token, setToken]=useState("");
 
@@ -32,18 +32,21 @@ const VideoUploadButton = () => {
         }
     }
 
-    const saveVideo = async (videoId) => {
+    const getVideoUrl = async (videoId) => {
         try {
-            await axios.post(`${environment.SAVE_VIDEO_URL}`, {"videoId": videoId});
-            console.log("VIDEO_SAVED_SUCCESSFULLY_IN_DB");
+            let response = await axios.post(`${environment.GET_VIDEO_URL}`, {"videoId": videoId});
+            console.log(response.data.videoUrl, "VIDEO_URL");
+            return response.data.videoUrl;
         } catch (error) {
-            console.log("ERROR_WHILE_SAVING_VIDEO", error);
+            console.log("ERROR_WHILE_GETTING_VIDEO_URL", error);
         }
     }
 
-    const onUploadSuccess = (video) => {
+    const onUploadSuccess = async (video) => {
         // Save Video URL in DB
-        saveVideo(video.videoId);
+        let videoUrl = await getVideoUrl(video.videoId);
+        // Set VideoURL in parent component course form
+        prop.setVideoUrl(prop.index, videoUrl);
     }
 
     useEffect(() => {

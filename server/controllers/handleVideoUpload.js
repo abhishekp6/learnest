@@ -38,15 +38,16 @@ exports.getUploadToken = async (req, res, next) => {
 // @method GET
 // @route /api/v1/get/token/upload
 
-exports.saveVideo = async (req, res, next) => {
+exports.getVideoUrl = async (req, res, next) => {
+
   const client = new ApiVideoClient({
     apiKey: process.env.VIDEO_API_KEY // It retrieves your API key from .env.development
   })
-
   try {
-      const videoUrl = await client.videos.get(req.query.id);
-      res.status(200).send({"Status": "Success"})
+      const videoUrl = await client.videos.get(req.body.videoId);
+      res.status(200).send({"Status": "Success", "videoUrl": videoUrl.assets.mp4})
     } catch (error) {
       res.status(401).send(error)
     }
+    
 }

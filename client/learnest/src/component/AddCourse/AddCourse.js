@@ -14,7 +14,7 @@ const AddCourse = () => {
     }
 
     const addChapter = () => {
-        setChapter([...chapter, {"title": "", "description": ""}])
+        setChapter([...chapter, {"title": "", "description": "", "videoUrl":""}])
     }
 
     const removeChapter = (index) => {
@@ -25,7 +25,12 @@ const AddCourse = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("Submit Pressed")
+        console.log("Submit Pressed", chapter)
+    }
+
+    const setVideoUrl = (index, url) => {
+        let chapterList = [...chapter];
+        chapterList[index].videoUrl = url; 
     }
 
     return(
@@ -36,7 +41,7 @@ const AddCourse = () => {
                         <div key={index}>
                             <input value={element.title} name="title" onChange={(event) => {onFormInput(index, event)}} placeholder="Add Title"></input>
                             <input value={element.description} name="description" onChange={(event) => {onFormInput(index, event)}} placeholder="Add Chapter Description"></input>
-                            <VideoUploadButton />
+                            <VideoUploadButton setVideoUrl={setVideoUrl} index={index}/>
                             <button onClick={() => {removeChapter(index)}}>Remove Form Field</button>
                         </div>
                     )
