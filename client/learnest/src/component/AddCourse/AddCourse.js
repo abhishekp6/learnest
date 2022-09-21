@@ -1,7 +1,6 @@
 
 import React from "react";
 import { useState } from "react";
-import VideoUploadButton from "../Upload/Upload_Button";
 import CustomUploadButton from "../Upload/CustomUploadButton";
 
 const AddCourse = () => {
@@ -47,7 +46,6 @@ const AddCourse = () => {
                         <div key={index}>
                             <input value={element.title} name="title" onChange={(event) => {onFormInput(index, event)}} placeholder="Add Title"></input>
                             <input value={element.description} name="description" onChange={(event) => {onFormInput(index, event)}} placeholder="Add Chapter Description"></input>
-                            {/* <VideoUploadButton setVideoUrl={setVideoUrl} index={index}/> */}
                             <CustomUploadButton currentIndexForm={returnFormData} setVideoId={setVideoId} index={index}/>
                             <button onClick={() => {removeChapter(index)}}>Remove Form Field</button>
                         </div>
