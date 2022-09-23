@@ -31,6 +31,9 @@ const AddCourse = () => {
     const removeLecture = (lectureIndex, index) => {
         let rerenderVar = section.slice(); // New Variable to get a new array, not the reference array, for react to rerender
         rerenderVar[lectureIndex].splice(index, 1);
+        if(rerenderVar[lectureIndex].length === 0){
+            rerenderVar.splice(lectureIndex, 1);
+        }
         setSection(rerenderVar);
     }
 
