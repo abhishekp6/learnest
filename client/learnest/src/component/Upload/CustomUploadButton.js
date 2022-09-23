@@ -32,7 +32,7 @@ const CustomUploadButton = (props) => {
         e.preventDefault();
 
         // Get Current Index Video Data
-        const videoData = props.currentIndexForm(props.index);
+        const videoData = props.currentIndexForm(props.lectureIndex, props.index);
 
         //Create Video
         const options = {
@@ -52,9 +52,9 @@ const CustomUploadButton = (props) => {
         }
         const formData = new FormData();
         formData.append("file", file);
-        const uploadVideoResponse = await axios.post(`${environment.API_VIDEO_BASE}/${resVideoId}/source`, formData, {...options});
+        const uploadVideoResponse = await axios.post(`${environment.API_VIDEO_BASE}/${resVideoId}/source`, formData, {...uploadOptions});
         if(uploadVideoResponse && uploadVideoResponse.status === 201){
-            props.setVideoId(props.index, resVideoId);
+            props.setVideoId(props.lectureIndex ,props.index, resVideoId);
         }
     }
 
