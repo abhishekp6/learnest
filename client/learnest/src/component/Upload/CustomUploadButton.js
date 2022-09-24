@@ -34,6 +34,12 @@ const CustomUploadButton = (props) => {
         // Get Current Index Video Data
         const videoData = props.currentIndexForm(props.lectureIndex, props.index);
 
+        // Validation on title
+        if(!videoData.title){
+            console.log("Please Enter Lecture Title")
+            return;
+        }
+
         //Create Video
         const options = {
             headers: {

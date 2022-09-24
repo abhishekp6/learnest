@@ -6,12 +6,18 @@ import CustomUploadButton from "../Upload/CustomUploadButton";
 const AddCourse = () => {
 
     const [section, setSection] = useState(
-        [ 
-            { 
-                "sectionTitle": "",
-                "sectionData": [{"title": "", "description": "", "videoId":""}]
-            } 
-        ]
+        {
+            "courseTitle": "",
+            "courseOverView": "",
+            "courseLearning": [],
+            "preRequisite": [],
+            "course": [ 
+                { 
+                    "sectionTitle": "",
+                    "sectionData": [{"title": "", "description": "", "videoId":""}]
+                } 
+            ]
+        }
     );
 
     const onFormInput = (lectureIndex, index, event) => {
@@ -20,37 +26,39 @@ const AddCourse = () => {
         // Set Section Title Flow
         if(index === -1){
             let sectionVar = section;
-            sectionVar[lectureIndex].sectionTitle = event.target.value;
-            let rerenderVar = sectionVar.slice();
+            sectionVar.course[lectureIndex].sectionTitle = event.target.value;
+            let rerenderVar = JSON.parse(JSON.stringify(sectionVar));
             setSection(rerenderVar);
         }
         // Set section Data flow
         else{
             let newFormValues = section;
-            newFormValues[lectureIndex].sectionData[index][event.target.name] = event.target.value;
-            let rerenderVar = newFormValues.slice();
+            newFormValues.course[lectureIndex].sectionData[index][event.target.name] = event.target.value;
+            let rerenderVar = JSON.parse(JSON.stringify(newFormValues));
             setSection(rerenderVar);
         }
     }
 
     const addLecture = (lectureIndex) => {
         let sectionVar = section;
-        sectionVar[lectureIndex].sectionData = [...sectionVar[lectureIndex].sectionData, {"title": "", "description": "", "videoId":""} ];
-        let newSectionVar = sectionVar.slice(); // New Variable to get a new array, not the reference array, for react to rerender
+        sectionVar.course[lectureIndex].sectionData = [...sectionVar.course[lectureIndex].sectionData, {"title": "", "description": "", "videoId":""} ];
+        let newSectionVar = JSON.parse(JSON.stringify(sectionVar)); // New Variable to get a new object, not the reference object, for react to rerender
         setSection(newSectionVar)
         console.log(section, "Lecture")
     }
 
     const addSection = () => {
-        setSection([...section, { "sectionTitle": "", "sectionData": [{"title": "", "description": "", "videoId":""}] }]);
+        let sectionVar = JSON.parse(JSON.stringify(section));
+        sectionVar.course = [...section.course, { "sectionTitle": "", "sectionData": [{"title": "", "description": "", "videoId":""}] }];
+        setSection(sectionVar);
         console.log(section, "Section")
     }
 
     const removeLecture = (lectureIndex, index) => {
-        let rerenderVar = section.slice(); // New Variable to get a new array, not the reference array, for react to rerender
-        rerenderVar[lectureIndex].sectionData.splice(index, 1);
-        if(rerenderVar[lectureIndex].sectionData.length === 0){
-            rerenderVar.splice(lectureIndex, 1);
+        let rerenderVar = JSON.parse(JSON.stringify(section)); // New Variable to get a new array, not the reference array, for react to rerender
+        rerenderVar.course[lectureIndex].sectionData.splice(index, 1);
+        if(rerenderVar.course[lectureIndex].sectionData.length === 0){
+            rerenderVar.course.splice(lectureIndex, 1);
         }
         setSection(rerenderVar);
     }
@@ -61,20 +69,23 @@ const AddCourse = () => {
 
     const setVideoId = (lectureIndex, index, videoId) => {
         let lectureList = section;
-        lectureList[lectureIndex].sectionData[index].videoId = videoId;
-        let renderVal = lectureList.slice();
+        lectureList.course[lectureIndex].sectionData[index].videoId = videoId;
+        let renderVal = JSON.parse(JSON.stringify(lectureList));
         setSection(renderVal); 
+        console.log(section, "UPLOAD_SUCCESS")
     }
 
     const returnFormData = (lectureIndex, index) => {
-        const formData = section[lectureIndex].sectionData[index];
+        const formData = section.course[lectureIndex].sectionData[index];
         return formData;
     }
 
     return(
         <form onSubmit={handleSubmit}>
+            <input placeholder="Course Title"></input>
+            <div>***********************************************************</div>
             {
-                section.map((lecture, lectureIndex) => {
+                section.course.map((lecture, lectureIndex) => {
                     return(
                         <div key={lectureIndex}>
                             <div>-----------------------------------------------------------------------------------------------------------------------------------------------------------</div>
@@ -99,6 +110,7 @@ const AddCourse = () => {
             <div>===================================================================================================================</div>
             <button type="submit" placeholder="Submit">Submit</button>
             <button onClick={() => {addSection()}}>Add Section</button>
+            <div>***********************************************************</div>
         </form>
     );
 }
