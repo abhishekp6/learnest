@@ -5,33 +5,51 @@ import CustomUploadButton from "../Upload/CustomUploadButton";
 
 const AddCourse = () => {
 
-    const [section, setSection] = useState([ [{"title": "", "description": "", "videoId":""}] ]);
+    const [section, setSection] = useState(
+        [ 
+            { 
+                "sectionTitle": "",
+                "sectionData": [{"title": "", "description": "", "videoId":""}]
+            } 
+        ]
+    );
 
     const onFormInput = (lectureIndex, index, event) => {
         console.log(lectureIndex, index, event.target.value, event.target.name)
-        let newFormValues = section;
-        newFormValues[lectureIndex][index][event.target.name] = event.target.value;
-        let renderVar = newFormValues.slice();
-        setSection(renderVar);
+        
+        // Set Section Title Flow
+        if(index === -1){
+            let sectionVar = section;
+            sectionVar[lectureIndex].sectionTitle = event.target.value;
+            let rerenderVar = sectionVar.slice();
+            setSection(rerenderVar);
+        }
+        // Set section Data flow
+        else{
+            let newFormValues = section;
+            newFormValues[lectureIndex].sectionData[index][event.target.name] = event.target.value;
+            let rerenderVar = newFormValues.slice();
+            setSection(rerenderVar);
+        }
     }
 
     const addLecture = (lectureIndex) => {
         let sectionVar = section;
-        sectionVar[lectureIndex] = [...sectionVar[lectureIndex], {"title": "", "description": "", "videoId":""} ];
+        sectionVar[lectureIndex].sectionData = [...sectionVar[lectureIndex].sectionData, {"title": "", "description": "", "videoId":""} ];
         let newSectionVar = sectionVar.slice(); // New Variable to get a new array, not the reference array, for react to rerender
         setSection(newSectionVar)
         console.log(section, "Lecture")
     }
 
     const addSection = () => {
-        setSection([...section, [{"title": "", "description": "", "videoId":""}]]);
+        setSection([...section, { "sectionTitle": "", "sectionData": [{"title": "", "description": "", "videoId":""}] }]);
         console.log(section, "Section")
     }
 
     const removeLecture = (lectureIndex, index) => {
         let rerenderVar = section.slice(); // New Variable to get a new array, not the reference array, for react to rerender
-        rerenderVar[lectureIndex].splice(index, 1);
-        if(rerenderVar[lectureIndex].length === 0){
+        rerenderVar[lectureIndex].sectionData.splice(index, 1);
+        if(rerenderVar[lectureIndex].sectionData.length === 0){
             rerenderVar.splice(lectureIndex, 1);
         }
         setSection(rerenderVar);
@@ -43,13 +61,13 @@ const AddCourse = () => {
 
     const setVideoId = (lectureIndex, index, videoId) => {
         let lectureList = section;
-        lectureList[lectureIndex][index].videoId = videoId;
+        lectureList[lectureIndex].sectionData[index].videoId = videoId;
         let renderVal = lectureList.slice();
         setSection(renderVal); 
     }
 
     const returnFormData = (lectureIndex, index) => {
-        const formData = section[lectureIndex][index];
+        const formData = section[lectureIndex].sectionData[index];
         return formData;
     }
 
@@ -60,8 +78,9 @@ const AddCourse = () => {
                     return(
                         <div key={lectureIndex}>
                             <div>-----------------------------------------------------------------------------------------------------------------------------------------------------------</div>
+                            <input value={lecture.sectionTitle} onChange={(event) => {onFormInput(lectureIndex, -1, event)}} name="sectionTitle" placeholder="Add Section Title"></input>
                             {
-                                lecture.map((element, index) => {
+                                lecture.sectionData.map((element, index) => {
                                     return(
                                         <div key={index}>
                                             <input value={element.title} name="title" onChange={(event) => {onFormInput(lectureIndex, index, event)}} placeholder="Add Title"></input>
