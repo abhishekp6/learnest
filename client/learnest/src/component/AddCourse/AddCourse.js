@@ -9,8 +9,11 @@ const AddCourse = () => {
         {
             "courseTitle": "",
             "courseOverView": "",
-            "courseLearning": [],
-            "preRequisite": [],
+            "courseLearning": [""],
+            "preRequisite": [""],
+            "courseHeaderImage":"",
+            "courseThumbnail":"",
+            "coursePrice": 0,
             "course": [ 
                 { 
                     "sectionTitle": "",
@@ -23,19 +26,47 @@ const AddCourse = () => {
     const onFormInput = (lectureIndex, index, event) => {
         console.log(lectureIndex, index, event.target.value, event.target.name)
         
+        //Set Course Details
+        if(lectureIndex === -1 && index === -1){
+            let sectionVar = JSON.parse(JSON.stringify(section));
+            sectionVar.courseTitle = event.target.value;
+            setSection(sectionVar);
+        }
+        else if(lectureIndex === -2 && index === -2){
+            let sectionVar = JSON.parse(JSON.stringify(section));
+            sectionVar.courseOverView = event.target.value;
+            setSection(sectionVar);
+        }
+        else if(lectureIndex === -3 && index >= 0){
+            let sectionVar = JSON.parse(JSON.stringify(section));
+            sectionVar.courseLearning[index] = event.target.value;
+            setSection(sectionVar);
+        }
+        else if(lectureIndex === -4 && index >= 0){
+            let sectionVar = JSON.parse(JSON.stringify(section));
+            sectionVar.preRequisite[index] = event.target.value;
+            setSection(sectionVar);
+        }
+        else if(lectureIndex === -5 && index === -5){
+            let sectionVar = JSON.parse(JSON.stringify(section));
+            sectionVar.coursePrice = event.target.value;
+            setSection(sectionVar);
+        }
+        else if(lectureIndex === -6 && index === -6){
+            event.preventDefault();
+            console.log(event.target.files[0], "UPLOADED_IMAGE")
+        }
         // Set Section Title Flow
-        if(index === -1){
-            let sectionVar = section;
+        else if(lectureIndex >= 0 && index === -1){
+            let sectionVar = JSON.parse(JSON.stringify(section));
             sectionVar.course[lectureIndex].sectionTitle = event.target.value;
-            let rerenderVar = JSON.parse(JSON.stringify(sectionVar));
-            setSection(rerenderVar);
+            setSection(sectionVar);
         }
         // Set section Data flow
         else{
-            let newFormValues = section;
+            let newFormValues = JSON.parse(JSON.stringify(section));
             newFormValues.course[lectureIndex].sectionData[index][event.target.name] = event.target.value;
-            let rerenderVar = JSON.parse(JSON.stringify(newFormValues));
-            setSection(rerenderVar);
+            setSection(newFormValues);
         }
     }
 
@@ -52,6 +83,20 @@ const AddCourse = () => {
         sectionVar.course = [...section.course, { "sectionTitle": "", "sectionData": [{"title": "", "description": "", "videoId":""}] }];
         setSection(sectionVar);
         console.log(section, "Section")
+    }
+
+    const addPreRequisite = () => {
+        let sectionVar = JSON.parse(JSON.stringify(section));
+        sectionVar.preRequisite.push("");
+        setSection(sectionVar);
+        console.log(section.preRequisite);
+    }
+
+    const addLearning = () => {
+        let sectionVar = JSON.parse(JSON.stringify(section));
+        sectionVar.courseLearning.push("");
+        setSection(sectionVar);
+        console.log(section.courseLearning);
     }
 
     const removeLecture = (lectureIndex, index) => {
@@ -82,7 +127,39 @@ const AddCourse = () => {
 
     return(
         <form onSubmit={handleSubmit}>
-            <input placeholder="Course Title"></input>
+
+            <div>Upload Course Banner</div>
+            <input type="file" onChange={(event) => {onFormInput(-6, -6, event)}}/>
+            <div>---------------------------------------------------------------------------------------------------</div>
+
+            <input value={section.courseTitle} onChange={(event) => {onFormInput(-1, -1, event)}} name="courseTitle" placeholder="Course Title"></input>
+            <input value={section.courseOverView} onChange={(event)=> {onFormInput(-2, -2, event)}} name="courseOverView" placeholder="Course OverView"></input>
+
+            <div>---------------------------------------------------------------------------------------------------</div>
+            <div>
+                {
+                    section.courseLearning.map((point, index) => {
+                        return(
+                            <div key={index}>
+                                <input value={point} onChange={(event) => {onFormInput(-3, index, event)}} name="courseLearning" placeholder="Course Learnings"></input>
+                            </div>
+                        )
+                    })
+                }   
+                <button onClick={() => {addLearning()}}>Add Point</button>
+            </div>
+            <div>
+                {
+                    section.preRequisite.map((point, index) => {
+                        return(
+                            <div key={index}>
+                                <input value={point} onChange={(event) => {onFormInput(-4, index, event)}} name="coursePreRequisite" placeholder="PreRequisites"></input>
+                            </div>                            
+                        )
+                    })
+                }
+                <button onClick={() => {addPreRequisite()}}>Add Point</button>
+            </div>
             <div>***********************************************************</div>
             {
                 section.course.map((lecture, lectureIndex) => {
@@ -108,6 +185,7 @@ const AddCourse = () => {
                 })
             }
             <div>===================================================================================================================</div>
+            <input name="coursePrice" onChange={(event) => {onFormInput(-5, -5, event)}} placeholder="Course Price"></input>
             <button type="submit" placeholder="Submit">Submit</button>
             <button onClick={() => {addSection()}}>Add Section</button>
             <div>***********************************************************</div>
