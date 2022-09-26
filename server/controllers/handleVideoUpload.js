@@ -1,6 +1,8 @@
 const ApiVideoClient =  require('@api.video/nodejs-client')
 const Crypt = require('hybrid-crypto-js').Crypt;
 const axios = require('axios');
+const CourseSchema = require('../models/Course'); 
+const { Mongoose } = require('mongoose');
 
 exports.getCustomUploadToken = async (req, res, next) => {
   try {
@@ -10,5 +12,16 @@ exports.getCustomUploadToken = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     res.status(500).send({"statusMessage": "Internal Server Error", "errorMessage": error});
+  }
+}
+
+exports.saveCourse = async (req, res, next) => {
+  try {
+    let courseData = req.body;
+    let createCourse = await CourseSchema.create(courseData);
+
+    res.status(201).send({"Status": "Success", "data": createCourse});
+  } catch (error) {
+    res.status(500).send({"Status": "Internal Server Error", "Error": error})
   }
 }

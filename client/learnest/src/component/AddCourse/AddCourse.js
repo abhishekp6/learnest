@@ -2,6 +2,8 @@
 import React from "react";
 import { useState } from "react";
 import CustomUploadButton from "../Upload/CustomUploadButton";
+import axios from "axios";
+import environment from "../../config/Config";
 
 const AddCourse = () => {
 
@@ -108,8 +110,10 @@ const AddCourse = () => {
         setSection(rerenderVar);
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
+        console.log("SUBMIT", section)
+        let saveCourseData = await axios.post(environment.SAVE_COURSE, section);
     }
 
     const setVideoId = (lectureIndex, index, videoId) => {
