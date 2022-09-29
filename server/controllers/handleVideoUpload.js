@@ -18,9 +18,18 @@ exports.getCustomUploadToken = async (req, res, next) => {
 exports.saveCourse = async (req, res, next) => {
   try {
     let courseData = req.body;
-    let createCourse = await CourseSchema.create(courseData);
+    
+    // Check if courseId in request body already exists in database
+    let courseIdExists = await CourseSchema.exists({"courseId": courseData.courseId});
+    
+    if(courseIdExists === null){
+      let createCourse = await CourseSchema.create(courseData);
+      res.status(201).send({"Status": "Success", "data": createCourse});
+    }
+    else{
+      res.status(400).send({"Status": "Bad Request", "Error": "Course Id already exists"});
+    }
 
-    res.status(201).send({"Status": "Success", "data": createCourse});
   } catch (error) {
     res.status(500).send({"Status": "Internal Server Error", "Error": error})
   }
