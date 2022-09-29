@@ -9,6 +9,7 @@ const AddCourse = () => {
 
     const [section, setSection] = useState(
         {
+            "courseId": "",
             "courseTitle": "",
             "courseOverView": "",
             "courseLearning": [""],
@@ -57,6 +58,11 @@ const AddCourse = () => {
         else if(lectureIndex === -6 && index === -6){
             event.preventDefault();
             console.log(event.target.files[0], "UPLOADED_IMAGE")
+        }
+        else if(lectureIndex === -7 && index === -7){
+            let sectionVar = JSON.parse(JSON.stringify(section));
+            sectionVar.courseId = event.target.value;
+            setSection(sectionVar);
         }
         // Set Section Title Flow
         else if(lectureIndex >= 0 && index === -1){
@@ -113,7 +119,11 @@ const AddCourse = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log("SUBMIT", section)
-        let saveCourseData = await axios.post(environment.SAVE_COURSE, section);
+        try {
+            let saveCourseData = await axios.post(environment.SAVE_COURSE, section);
+        } catch (error) {
+            console.log("error");
+        }
     }
 
     const setVideoId = (lectureIndex, index, videoId) => {
@@ -138,6 +148,7 @@ const AddCourse = () => {
 
             <input value={section.courseTitle} onChange={(event) => {onFormInput(-1, -1, event)}} name="courseTitle" placeholder="Course Title"></input>
             <input value={section.courseOverView} onChange={(event)=> {onFormInput(-2, -2, event)}} name="courseOverView" placeholder="Course OverView"></input>
+            <input value={section.courseId} onChange={(event)=> {onFormInput(-7, -7, event)}} name="courseId" placeholder="Course ID"></input>
 
             <div>---------------------------------------------------------------------------------------------------</div>
             <div>
