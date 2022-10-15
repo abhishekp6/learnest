@@ -36,11 +36,13 @@ const AddCourse = () => {
         "courseThumbnail":"",
         "coursePrice": 0,
         "course": [ 
-            { 
+            {
                 "sectionTitle": "",
                 "sectionData": [{"title": "", "description": "", "videoId":""}]
             } 
-        ]
+        ],
+        "courseLength": "",
+        "sectionLength": ""
     })
 
     const [allowSubmit, setAllowSubmit] = useState(false);
@@ -136,6 +138,21 @@ const AddCourse = () => {
         setSection(rerenderVar);
     }
 
+    const removePoint = (param, index) => {
+        if(param === 'courseLearning'){
+            let rerenderVar = JSON.parse(JSON.stringify(section)); // New Variable to get a new array, not the reference array, for react to rerender
+            if(rerenderVar.courseLearning.length > 1){
+                rerenderVar.courseLearning.splice(index, 1);
+            }
+            setSection(rerenderVar);
+        }
+        else if(param === 'preRequisite'){
+            let rerenderVar = JSON.parse(JSON.stringify(section)); // New Variable to get a new array, not the reference array, for react to rerender
+            rerenderVar.preRequisite.splice(index, 1);
+            setSection(rerenderVar);
+        }
+    }
+
     const setVideoId = (lectureIndex, index, videoId) => {
         let lectureList = section;
         lectureList.course[lectureIndex].sectionData[index].videoId = videoId;
@@ -170,44 +187,87 @@ const AddCourse = () => {
     }
 
     const validateFormInput = () => {
+
         let errorObject = JSON.parse(JSON.stringify(error));
-        
+        let valid = true;
+
         // Required Validations
         if(!section.courseId){
-            errorObject.courseId = "Course Id Mandatory! Please Enter Course Id"
+            errorObject.courseId = "Course Id Mandatory! Please Enter Course Id";
+            valid = false
+        }else{
+            errorObject.courseId = "";
+            valid = true
         }
-        else if(!section.courseTitle){
+        if(!section.courseTitle){
             errorObject.courseTitle = "Course Title Mandatory! Please Enter Course Title"
+            valid = false
+        }else{
+            errorObject.courseTitle = ""
+            valid = true
         }
-        else if(!section.courseOverView){
+        if(!section.courseOverView){
             errorObject.courseOverView = "Course Overview Mandatory! Please Enter Course Overview"
+            valid = false
+        }else{
+            errorObject.courseOverView = ""
+            valid = true
         }
-        else if(!section.courseLearning){
+        if(!section.courseLearning){
             errorObject.courseLearning = "Course Learning Mandatory! Please Enter Course Learning"
+            valid = false
+        }else{
+            errorObject.courseLearning = ""
+            valid = true
         }
-        else if(!section.coursePrice){
+        if(!section.coursePrice){
             errorObject.coursePrice = "Course Price Mandatory! Please Enter Course Price"
+            valid = false
+        }else{
+            errorObject.coursePrice = ""
+            valid = true
         }
-        else if(isParamValid('title')){
+        if(isParamValid('title')){
             errorObject.course[0].sectionData[0].title = "Section Title Mandatory! Please Enter Section Title"
+            valid = false
+        }else{
+            errorObject.course[0].sectionData[0].title = ""
+            valid = true
         }
-        else if(isParamValid('videoId')){
+        if(isParamValid('videoId')){
             errorObject.course[0].sectionData[0].videoId = "Video Not Uploaded Successfully!! Please Upload Video Again"
+            valid = false
+        }else{
+            errorObject.course[0].sectionData[0].videoId = ""
+            valid = true
         }
-        else if(isParamValid('sectionTitle')){
+        if(isParamValid('sectionTitle')){
             errorObject.course[0].sectionTitle = "Section Title Mandatory! Please Enter Section Title"
+            valid = false
+        }else{
+            errorObject.course[0].sectionTitle = ""
+            valid = true
         }
-        else if(section.course.length === 0){
-            errorObject.courseId = "Atleast One Section Required !!"
+        if(section.course.length === 0){
+            errorObject.courseLength = "Atleast One Section Required !!"
+            valid = false
+        }else{
+            errorObject.courseLength = ""
+            valid = true
         }
-        else if(section.course.sectionData.length === 0){
-            errorObject.courseId = "Atleast One Course Required !!"
+        if(isParamValid('sectionLength')){
+            errorObject.sectionLength = "Atleast One Course Required !!"
+            valid = false
+        }else{
+            errorObject.sectionLength = ""
+            valid = true
         }
-        else{
+        if(valid){
             clearErrorObject(errorObject);
             setAllowSubmit(true);
         }
         setError(errorObject);
+        console.log(errorObject, "ERR")
     }
 
     function isParamValid(param) {
@@ -242,6 +302,15 @@ const AddCourse = () => {
             })
             return isSectionTitleValid;
         }
+        else if(param === 'sectionLength'){
+            let isSectionLengthValid = true;
+            section.course.forEach((courseVar) => {
+                if(courseVar.length === 0){
+                    isSectionLengthValid = false;
+                }
+            })
+            return isSectionLengthValid;
+        }
         
     }
     function clearErrorObject(errorObject){
@@ -271,8 +340,11 @@ const AddCourse = () => {
             <div>---------------------------------------------------------------------------------------------------</div>
 
             <input value={section.courseTitle} onChange={(event) => {onFormInput(-1, -1, event)}} name="courseTitle" placeholder="Course Title"></input>
+            <span>{error.courseTitle}</span>
             <input value={section.courseOverView} onChange={(event)=> {onFormInput(-2, -2, event)}} name="courseOverView" placeholder="Course OverView"></input>
+            <span>{error.courseOverView}</span>
             <input value={section.courseId} onChange={(event)=> {onFormInput(-7, -7, event)}} name="courseId" placeholder="Course ID"></input>
+            <span>{error.courseId}</span>
 
             <div>---------------------------------------------------------------------------------------------------</div>
             <div>
@@ -281,6 +353,7 @@ const AddCourse = () => {
                         return(
                             <div key={index}>
                                 <input value={point} onChange={(event) => {onFormInput(-3, index, event)}} name="courseLearning" placeholder="Course Learnings"></input>
+                                <button onClick={() => {removePoint('courseLearning', index)}}>Remove Form Field</button>
                             </div>
                         )
                     })
@@ -293,6 +366,7 @@ const AddCourse = () => {
                         return(
                             <div key={index}>
                                 <input value={point} onChange={(event) => {onFormInput(-4, index, event)}} name="coursePreRequisite" placeholder="PreRequisites"></input>
+                                <button onClick={() => {removePoint('preRequisite', index)}}>Remove Form Field</button>
                             </div>                            
                         )
                     })
