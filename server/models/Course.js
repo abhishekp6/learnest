@@ -7,11 +7,40 @@ const CourseSchema = new mongoose.Schema({
         unique: [true, 'Course_ID_Should_Be_Unique'],
         trim: true
     },
+    courseTitle: {
+        type: String,
+        require: true
+    },
+    courseOverView: {
+        type: String,
+        require: true
+    },
+    courseLearning: {
+        type: Array,
+        require: true
+    },
+    preRequisite: {
+        type: Array,
+        require: false
+    },
+    courseHeaderImage: {
+        type: String,
+        require: false,
+        trim: true
+    },
+    courseThumbnail: {
+        type: String,
+        require: false
+    },
+    coursePrice: {
+        type: Number,
+        require: true
+    },
     course: {
         sectionData: {
             description: {
                 type: String,
-                require: true
+                require: false
             },
             title: {
                 type: String,
@@ -26,35 +55,6 @@ const CourseSchema = new mongoose.Schema({
             type: String,
             require: true
         },
-        type: Array,
-        require: true
-    },
-    courseHeaderImage: {
-        type: String,
-        require: false,
-        trim: true
-    },
-    courseLearning: {
-        type: Array,
-        require: true
-    },
-    courseOverView: {
-        type: String,
-        require: true
-    },
-    coursePrice: {
-        type: Number,
-        require: true
-    },
-    courseThumbnail: {
-        type: String,
-        require: false
-    },
-    courseTitle: {
-        type: String,
-        require: true
-    },
-    preRequisite: {
         type: Array,
         require: true
     },
