@@ -105,6 +105,7 @@ const AddCourse = () => {
         sectionVar.course[lectureIndex].sectionData = [...sectionVar.course[lectureIndex].sectionData, {"title": "", "description": "", "videoId":""} ];
         let newSectionVar = JSON.parse(JSON.stringify(sectionVar)); // New Variable to get a new object, not the reference object, for react to rerender
         setSection(newSectionVar)
+        setError([...error.course[lectureIndex].sectionData, {"title": "", "description": "", "videoId":""} ])
         console.log(section, "Lecture")
     }
 
@@ -112,7 +113,27 @@ const AddCourse = () => {
         let sectionVar = JSON.parse(JSON.stringify(section));
         sectionVar.course = [...section.course, { "sectionTitle": "", "sectionData": [{"title": "", "description": "", "videoId":""}] }];
         setSection(sectionVar);
+        setError([...error.course, { "sectionTitle": "", "sectionData": [{"title": "", "description": "", "videoId":""}] }])
         console.log(section, "Section")
+    }
+
+    const removeLecture = (lectureIndex, index) => {
+        let rerenderVar = JSON.parse(JSON.stringify(section)); // New Variable to get a new array, not the reference array, for react to rerender
+        let errorObject = JSON.parse(JSON.stringify(error));
+
+        rerenderVar.course[lectureIndex].sectionData.splice(index, 1);
+        if(rerenderVar.course[lectureIndex].sectionData.length === 0){
+            rerenderVar.course.splice(lectureIndex, 1);
+        }
+        setSection(rerenderVar);
+
+        errorObject.course[lectureIndex].sectionData.splice(index, 1);
+        if(errorObject.course[lectureIndex].sectionData.length === 0){
+            errorObject.course.splice(lectureIndex, 1);
+        }
+
+        setError(errorObject);
+        
     }
 
     const addPreRequisite = () => {
@@ -127,15 +148,6 @@ const AddCourse = () => {
         sectionVar.courseLearning.push("");
         setSection(sectionVar);
         console.log(section.courseLearning);
-    }
-
-    const removeLecture = (lectureIndex, index) => {
-        let rerenderVar = JSON.parse(JSON.stringify(section)); // New Variable to get a new array, not the reference array, for react to rerender
-        rerenderVar.course[lectureIndex].sectionData.splice(index, 1);
-        if(rerenderVar.course[lectureIndex].sectionData.length === 0){
-            rerenderVar.course.splice(lectureIndex, 1);
-        }
-        setSection(rerenderVar);
     }
 
     const removePoint = (param, index) => {
@@ -227,25 +239,9 @@ const AddCourse = () => {
             errorObject.coursePrice = ""
             valid = true
         }
-        if(isParamValid('title')){
-            errorObject.course[0].sectionData[0].title = "Section Title Mandatory! Please Enter Section Title"
+        if(!isParamValid(errorObject)){
             valid = false
         }else{
-            errorObject.course[0].sectionData[0].title = ""
-            valid = true
-        }
-        if(isParamValid('videoId')){
-            errorObject.course[0].sectionData[0].videoId = "Video Not Uploaded Successfully!! Please Upload Video Again"
-            valid = false
-        }else{
-            errorObject.course[0].sectionData[0].videoId = ""
-            valid = true
-        }
-        if(isParamValid('sectionTitle')){
-            errorObject.course[0].sectionTitle = "Section Title Mandatory! Please Enter Section Title"
-            valid = false
-        }else{
-            errorObject.course[0].sectionTitle = ""
             valid = true
         }
         if(section.course.length === 0){
@@ -270,49 +266,58 @@ const AddCourse = () => {
         console.log(errorObject, "ERR")
     }
 
-    function isParamValid(param) {
-        if(param === 'title'){
-            let isTitleValid = true;
-            section.course.forEach((courseVar) => {
-                courseVar.sectionData.forEach((sectionVar) => {
-                    if(!sectionVar.title){
-                        isTitleValid = false;
-                    }
-                })
-            })
-            return isTitleValid;
-        }
-        else if(param === 'videoId'){
-            let isVideoIdValid = true;
-            section.course.forEach((courseVar) => {
-                courseVar.sectionData.forEach((sectionVar) => {
-                    if(!sectionVar.videoId){
-                        isVideoIdValid = false;
-                    }
-                })
-            })
-            return isVideoIdValid;
-        }
-        else if(param === 'sectionTitle'){
-            let isSectionTitleValid = true;
-            section.course.forEach((courseVar) => {
-                if(!courseVar.sectionTitle){
-                    isSectionTitleValid = false;
+    function isParamValid(errorObject) {
+        let validity = true;
+
+        // title
+        section.course.forEach((courseVar, courseIndex) => {
+            courseVar.sectionData.forEach((sectionVar, sectionIndex) => {
+                if(!sectionVar.title){
+                    validity = false;
+                    errorObject.course[courseIndex].sectionData[sectionIndex].title = "Section Title Mandatory! Please Enter Section Title"
+                }else{
+                    errorObject.course[courseIndex].sectionData[sectionIndex].title = ""
                 }
             })
-            return isSectionTitleValid;
-        }
-        else if(param === 'sectionLength'){
-            let isSectionLengthValid = true;
-            section.course.forEach((courseVar) => {
-                if(courseVar.length === 0){
-                    isSectionLengthValid = false;
+        })
+
+        // videoId
+        section.course.forEach((courseVar, courseIndex) => {
+            courseVar.sectionData.forEach((sectionVar, sectionIndex) => {
+                if(!sectionVar.videoId){
+                    validity = false;
+                    errorObject.course[courseIndex].sectionData[sectionIndex].videoId = "Video Not Uploaded Successfully!! Please Upload Video Again"
+                }else{
+                    errorObject.course[courseIndex].sectionData[sectionIndex].videoId = ""
                 }
             })
-            return isSectionLengthValid;
+        })
+
+        // sectionTitle
+        section.course.forEach((courseVar, index) => {
+            if(!courseVar.sectionTitle){
+                validity = false;
+                errorObject.course[index].sectionTitle = "Section Title Mandatory! Please Enter Section Title"
+            }else{
+                errorObject.course[index].sectionTitle = ""
+            }
+        })
+
+        // sectionLength            
+        section.course.forEach((courseVar) => {
+            if(courseVar.length === 0){
+                validity = false;
+            }
+        })
+
+        if(!validity){
+            return false;
+        }else{
+            return true;
         }
         
     }
+
     function clearErrorObject(errorObject){
         errorObject = {
             "courseId": "",
