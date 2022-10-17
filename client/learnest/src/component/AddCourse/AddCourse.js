@@ -30,8 +30,8 @@ const AddCourse = () => {
         "courseId": "",
         "courseTitle": "",
         "courseOverView": "",
-        "courseLearning": [""],
-        "preRequisite": [""],
+        "courseLearning": "",
+        "preRequisite": "",
         "courseHeaderImage":"",
         "courseThumbnail":"",
         "coursePrice": 0,
@@ -365,6 +365,7 @@ const AddCourse = () => {
                 }   
                 <button onClick={() => {addLearning()}}>Add Point</button>
             </div>
+            <span>{error.courseLearning}</span>
             <div>
                 {
                     section.preRequisite.map((point, index) => {
@@ -378,6 +379,7 @@ const AddCourse = () => {
                 }
                 <button onClick={() => {addPreRequisite()}}>Add Point</button>
             </div>
+            <span>{error.preRequisite}</span>
             <div>***********************************************************</div>
             {
                 section.course.map((lecture, lectureIndex) => {
@@ -385,12 +387,15 @@ const AddCourse = () => {
                         <div key={lectureIndex}>
                             <div>-----------------------------------------------------------------------------------------------------------------------------------------------------------</div>
                             <input value={lecture.sectionTitle} onChange={(event) => {onFormInput(lectureIndex, -1, event)}} name="sectionTitle" placeholder="Add Section Title"></input>
+                            <span>{error.course[lectureIndex].sectionTitle}</span>
                             {
                                 lecture.sectionData.map((element, index) => {
                                     return(
                                         <div key={index}>
                                             <input value={element.title} name="title" onChange={(event) => {onFormInput(lectureIndex, index, event)}} placeholder="Add Title"></input>
+                                            <span>{error.course[lectureIndex].sectionData[index].title}</span>
                                             <input value={element.description} name="description" onChange={(event) => {onFormInput(lectureIndex, index, event)}} placeholder="Add Lecture Description"></input>
+                                            <span>{error.course[lectureIndex].sectionData[index].description}</span>
                                             <CustomUploadButton currentIndexForm={returnFormData} setVideoId={setVideoId} index={index} lectureIndex={lectureIndex}/>
                                             <button onClick={() => {removeLecture(lectureIndex, index)}}>Remove Form Field</button>
                                         </div>
