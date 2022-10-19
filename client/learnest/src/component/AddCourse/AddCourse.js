@@ -200,7 +200,7 @@ const AddCourse = () => {
 
     const validateFormInput = () => {
 
-        let errorObject = JSON.parse(JSON.stringify(error));
+        let errorObject = error;
         let valid = true;
 
         // Required Validations
@@ -218,14 +218,14 @@ const AddCourse = () => {
             errorObject.courseTitle = ""
             valid = true
         }
-        if(!section.courseOverView){
+        if(!section.courseOverView || section.courseOverView.length === 0 || (section.courseOverView.length === 1 && section.courseOverView[0] === "")){
             errorObject.courseOverView = "Course Overview Mandatory! Please Enter Course Overview"
             valid = false
         }else{
             errorObject.courseOverView = ""
             valid = true
         }
-        if(!section.courseLearning){
+        if(!section.courseLearning || section.courseLearning.length === 0 || (section.courseLearning.length === 1 && section.courseLearning[0] === "")){
             errorObject.courseLearning = "Course Learning Mandatory! Please Enter Course Learning"
             valid = false
         }else{
@@ -251,7 +251,7 @@ const AddCourse = () => {
             errorObject.courseLength = ""
             valid = true
         }
-        if(isParamValid('sectionLength')){
+        if(isParamValid(errorObject)){
             errorObject.sectionLength = "Atleast One Course Required !!"
             valid = false
         }else{
