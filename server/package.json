@@ -17,6 +17,7 @@
     "express": "^4.18.1",
     "hybrid-crypto-js": "^0.2.4",
     "mongoose": "^6.5.5",
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.19",
+    "razorpay": "^2.8.3"
   }
 }

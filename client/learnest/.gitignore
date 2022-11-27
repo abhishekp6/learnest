@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/config/SecretConfig.js
 /.pnp
 .pnp.js
 

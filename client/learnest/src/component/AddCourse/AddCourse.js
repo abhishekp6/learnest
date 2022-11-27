@@ -34,7 +34,7 @@ const AddCourse = () => {
         "preRequisite": "",
         "courseHeaderImage":"",
         "courseThumbnail":"",
-        "coursePrice": 0,
+        "coursePrice": null,
         "course": [ 
             {
                 "sectionTitle": "",
@@ -409,6 +409,7 @@ const AddCourse = () => {
             }
             <div>===================================================================================================================</div>
             <input name="coursePrice" onChange={(event) => {onFormInput(-5, -5, event)}} placeholder="Course Price"></input>
+            <span>{error.coursePrice}</span>
             <button type="submit" placeholder="Submit">Submit</button>
             <button onClick={() => {addSection()}}>Add Section</button>
             <div>***********************************************************</div>
