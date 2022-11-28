@@ -39,16 +39,16 @@ exports.verifyPayment = async (req, res, next) => {
 
         // Save Payment Success Data
         const transaction = new PaymentMetaDataSchema({
-            transactionid:req.body.transactionid,
-            transactionamount:req.body.transactionamount
+            transactionId:req.body.transactionid,
+            transactionAmount:req.body.transactionamount
         });
 
-        transaction.save((err, res) => {
+        transaction.save((err, transactionRes) => {
             if(err){
                 return res.status(500).send({"statusMessage": "Error While saving transaction details", "response": err});
             }
             else{
-                return res.status(200).send({"statusMessage": "Transaction Successfully Registered", "response": res});
+                return res.status(200).send({"statusMessage": "Transaction Successfully Registered", "response": transactionRes});
             }
         })
     }
