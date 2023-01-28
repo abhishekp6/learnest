@@ -105,16 +105,22 @@ const AddCourse = () => {
         sectionVar.course[lectureIndex].sectionData = [...sectionVar.course[lectureIndex].sectionData, {"title": "", "description": "", "videoId":""} ];
         let newSectionVar = JSON.parse(JSON.stringify(sectionVar)); // New Variable to get a new object, not the reference object, for react to rerender
         setSection(newSectionVar)
-        setError([...error.course[lectureIndex].sectionData, {"title": "", "description": "", "videoId":""} ])
-        console.log(section, "Lecture")
+
+        let errorVar = error;
+        errorVar.course[lectureIndex].sectionData = [...errorVar.course[lectureIndex].sectionData, {"title": "", "description": "", "videoId":""} ];
+        let newErrorVar = JSON.parse(JSON.stringify(errorVar));
+        setError(newErrorVar);
     }
 
     const addSection = () => {
         let sectionVar = JSON.parse(JSON.stringify(section));
         sectionVar.course = [...section.course, { "sectionTitle": "", "sectionData": [{"title": "", "description": "", "videoId":""}] }];
         setSection(sectionVar);
-        setError([...error.course, { "sectionTitle": "", "sectionData": [{"title": "", "description": "", "videoId":""}] }])
-        console.log(section, "Section")
+
+        let errorVar = error;
+        errorVar.course = [...errorVar.course, { "sectionTitle": "", "sectionData": [{"title": "", "description": "", "videoId":""}] }]
+        let newErrorVar = JSON.parse(JSON.stringify(errorVar));
+        setError(newErrorVar);
     }
 
     const removeLecture = (lectureIndex, index) => {
