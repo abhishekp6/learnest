@@ -59,6 +59,10 @@ const AddCourse = () => {
     const [errorSnack, setErrorSnack] = React.useState(false);
     const [success, setSuccess] = React.useState(false);
 
+    // Center Align States for Snackbar
+    const [vertical, setVertical] = React.useState('bottom');
+    const [horizontal, setHorizontal] = React.useState('center');
+
     const onFormInput = (sectionIndex, index, event) => {
         console.log(sectionIndex, index, event.target.value, event.target.name)
         
@@ -537,21 +541,21 @@ const AddCourse = () => {
                 {}
             </div>
             <div>
-                <Snackbar open={invalid} autoHideDuration={2000} onClose={handleClose}>
-                    <Alert severity="error" sx={{ width: '100%' }} onClose={handleClose}>
-                    Please Input Mandatory Form Values
-                    </Alert>
-                </Snackbar>
-                <Snackbar open={errorSnack} autoHideDuration={2000} onClose={handleClose}>
-                    <Alert severity="error" sx={{ width: '100%' }} onClose={handleClose}>
-                    Internal Server Error! We will be right back
-                    </Alert>
-                </Snackbar>
-                <Snackbar open={success} autoHideDuration={2000} onClose={handleClose}>
-                    <Alert severity="success" sx={{ width: '100%' }} onClose={handleClose}>
-                    Course Uploaded Successfully
-                    </Alert>
-                </Snackbar>
+                    <Snackbar open={invalid} autoHideDuration={2000} onClose={handleClose} anchorOrigin={{ vertical, horizontal }}>
+                        <Alert severity="error" sx={{ width: '100%'}} onClose={handleClose}>
+                        Please Input Mandatory Form Values
+                        </Alert>
+                    </Snackbar>
+                    <Snackbar open={errorSnack} autoHideDuration={2000} onClose={handleClose} anchorOrigin={{ vertical, horizontal }}>
+                        <Alert severity="error" sx={{ width: '100%' }} onClose={handleClose}>
+                        Internal Server Error! We will be right back
+                        </Alert>
+                    </Snackbar>
+                    <Snackbar open={success} autoHideDuration={2000} onClose={handleClose} anchorOrigin={{ vertical, horizontal }}>
+                        <Alert severity="success" sx={{ width: '100%' }} onClose={handleClose}>
+                        Course Uploaded Successfully
+                        </Alert>
+                    </Snackbar>
             </div>
         </form>
     );
