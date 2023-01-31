@@ -1,0 +1,78 @@
+.container{
+    width: 100%;
+    height: fit-content;
+    background-color: rgb(131, 195, 222);
+}
+
+.courseBanner{
+    width: 100%;
+    height: fit-content;
+    background-color: rgb(32, 131, 174);
+    display: flex;
+    column-gap: 25rem;
+}
+
+.subHeader{
+    width: 100%;
+    height: fit-content;
+    background-color: rgb(12, 164, 229);
+}
+
+.subHeader2{
+    width: 100%;
+    height: fit-content;
+    background-color: rgb(7, 113, 158);
+}
+
+.section{
+    width: 100%;
+    height: fit-content;
+    background-color: rgb(7, 113, 158);
+}
+
+.priceSec{
+    width: 100%;
+    height: fit-content;
+    background-color: rgb(34, 119, 155);
+}
+
+.addSec{
+    width: 100%;
+    height: fit-content;
+    background-color: rgb(10, 54, 73);
+}
+
+.submit{
+    width: 100%;
+    height: fit-content;
+    background-color: rgb(34, 119, 155);
+}
+
+.subHeaderAlign{
+    margin-bottom: 25px;
+}
+
+.subHeader2Align{
+    margin-bottom: 25px;
+}
+
+.priceSection{
+    display: flex;
+}
+
+.addSec{
+    margin-top: 25px;
+}
+
+.sectionTitle{
+    margin-bottom: 25px;
+}
+
+.sectionData{
+    margin-bottom: 25px;
+}
+
+.errorMessage{
+    font-size: small;
+    color: red;
+}
