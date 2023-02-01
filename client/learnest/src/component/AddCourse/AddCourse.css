@@ -1,55 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 .container{
-    width: 100%;
+    width: 98%;
     height: fit-content;
-    background-color: rgb(131, 195, 222);
+    background-color: rgb(150, 190, 207);
+    font-family: 'Poppins', sans-serif;
 }
 
-.courseBanner{
+.inputClass{
+    border: 0;
+    width: 26.5%;
+    height: 4vh;
+    font-size: inherit;
+    text-align: center;
+    font-family: sans-serif;
+    border-radius: 0.2rem;
+    outline: none;
+    transition: width 0.4s ease-in-out;
+    color: gray;
+    font-family: 'Poppins', sans-serif;
+    margin-right: 1.5rem;
+}
+
+.inputClass:focus{
+    background-color: lightblue;
+    width: 50%;
+}
+
+.inputClassSmallDiv{
+    border: 0;
+    width: 89%;
+    height: 4vh;
+    font-size: inherit;
+    text-align: center;
+    font-family: sans-serif;
+    border-radius: 0.2rem;
+    outline: none;
+    transition: width 0.4s ease-in-out;
+    color: gray;
+    font-family: 'Poppins', sans-serif;
+}
+
+.inputClassSmallDiv:focus{
+    background-color: lightblue;
+    width: 90%;
+}
+
+.buttonClass{
+    width: 20%;
+    height: 4vh;
+    background-image: linear-gradient(to left, #2525d6bd, #0101add1);
+    border: 0;
+    border-radius: 2px;
+    color: lightgrey;
+    margin-right: 5px;
+}
+
+.smallDivButtonClass{
+    width: 80%;
+    height: 4vh;
+    background-image: linear-gradient(to left, #2525d6bd, #0101add1);
+    border: 0;
+    border-radius: 2px;
+    color: lightgrey;
+    margin: 5px;
+}
+
+.line{
     width: 100%;
-    height: fit-content;
-    background-color: rgb(32, 131, 174);
-    display: flex;
-    column-gap: 25rem;
+    height: 2px;
+    background-color: lightgrey;
+    border-radius: 5px;
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+}
+
+.sectionLine{
+    width: 90%;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+    border-top: dashed;
+    border-color: lightgray;
+}
+
+.headerSec{
+    height: 8vh;
+    width: 100%;
+    border-radius: 10px;
+    background-image: linear-gradient(to left, blue, darkblue);
+    margin-bottom: 5vh;
 }
 
 .subHeader{
     width: 100%;
     height: fit-content;
-    background-color: rgb(12, 164, 229);
+    display: flex;
+    padding-left: 2.1rem;
 }
 
 .subHeader2{
     width: 100%;
     height: fit-content;
-    background-color: rgb(7, 113, 158);
+    padding-left: 2.1rem;
 }
 
 .section{
     width: 100%;
     height: fit-content;
-    background-color: rgb(7, 113, 158);
+    border-left: solid 2px lightgrey;
+    padding-left: 2rem;
 }
 
 .priceSec{
     width: 100%;
     height: fit-content;
-    background-color: rgb(34, 119, 155);
-}
-
-.addSec{
-    width: 100%;
-    height: fit-content;
-    background-color: rgb(10, 54, 73);
+    padding-left: 2.1rem;
 }
 
 .submit{
     width: 100%;
     height: fit-content;
-    background-color: rgb(34, 119, 155);
+    padding-left: 2.1rem;
+}
+
+.lectures{
+    display: grid;
+    grid-template-columns: 30% 30% 20% 20%;
+}
+
+.addSec{
+    width: 100%;
+    height: fit-content;
 }
 
 .subHeaderAlign{
     margin-bottom: 25px;
+    width: 100%;
+    height: fit-content;
 }
 
 .subHeader2Align{
@@ -75,4 +164,18 @@
 .errorMessage{
     font-size: small;
     color: red;
+    width: 89%;
+}
+
+.errorMessageSubHead{
+    font-size: small;
+    color: red;
+    width: 80%;
+}
+
+.courseBanner{
+    width: 100%;
+    height: 17vh;
+    display: flex;
+    column-gap: 5rem;
 }

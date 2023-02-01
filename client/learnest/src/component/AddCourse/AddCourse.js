@@ -386,12 +386,12 @@ const AddCourse = () => {
     const renderButton = (index, name) => {
         if(index === mainForm.courseLearning.length-1 && name === 'addLearning'){
             return (
-                <button onClick={() => {addLearning()}}>Add Point</button>
+                <button className="buttonClass" onClick={() => {addLearning()}}>Add Point</button>
             )
         }
         if(index === mainForm.preRequisite.length-1 && name === 'addPreReq'){
             return (
-                <button onClick={() => {addPreRequisite()}}>Add Point</button>
+                <button className="buttonClass" onClick={() => {addPreRequisite()}}>Add Point</button>
             )
         }
     }
@@ -406,97 +406,112 @@ const AddCourse = () => {
         }
       };
 
-    const handleClose = (event) => {
+    const handleClose = () => {
 
         setInvalid(false);
-        setInvalid(false);
-        setInvalid(false);
+        setErrorSnack(false);
+        setSuccess(false);
         
         return;
+    }
+
+    const returnLine = (index) => {
+        if(index != 0){
+            return (
+                <div className="sectionLine"></div>
+            );
+        }
     }
 
     return(
         <form className="container" onSubmit={handleSubmit}>
 
-            <div className="courseBanner">
+            {/* <div className="courseBanner">
                 <div>Upload Course Banner</div>
                 <div>
-                    <input type="file" onChange={(event) => {onFormInput(-6, -6, event)}}/>
+                    <input className="inputClass" type="file" onChange={(event) => {onFormInput(-6, -6, event)}}/>
                 </div>
+            </div> */}
+
+            <div className="headerSec">
+
             </div>
-            <div>---------------------------------------------------------------------------------------------------</div>
 
             <div className="subHeader">
                 <div className="subHeaderAlign">
                     <div>
-                        <input value={mainForm.courseTitle} onChange={(event) => {onFormInput(-1, -1, event)}} name="courseTitle" placeholder="Course Title"></input>
+                        <input className="inputClassSmallDiv" value={mainForm.courseTitle} onChange={(event) => {onFormInput(-1, -1, event)}} name="courseTitle" placeholder="Course Title"></input>
                     </div>
                     <div>
-                        <div className="errorMessage">{error.courseTitle}</div>
-                    </div>
-                </div>
-                <div className="subHeaderAlign">
-                    <div>
-                        <input value={mainForm.courseOverView} onChange={(event)=> {onFormInput(-2, -2, event)}} name="courseOverView" placeholder="Course OverView"></input>
-                    </div>
-                    <div>
-                        <div className="errorMessage">{error.courseOverView}</div>
+                        <div className="errorMessageSubHead">{error.courseTitle}</div>
                     </div>
                 </div>
                 <div className="subHeaderAlign">
                     <div>
-                        <input value={mainForm.courseId} onChange={(event)=> {onFormInput(-7, -7, event)}} name="courseId" placeholder="Course ID"></input>
+                        <input className="inputClassSmallDiv" value={mainForm.courseOverView} onChange={(event)=> {onFormInput(-2, -2, event)}} name="courseOverView" placeholder="Course OverView"></input>
                     </div>
                     <div>
-                        <div className="errorMessage">{error.courseId}</div>
+                        <div className="errorMessageSubHead">{error.courseOverView}</div>
+                    </div>
+                </div>
+                <div className="subHeaderAlign">
+                    <div>
+                        <input className="inputClassSmallDiv" value={mainForm.courseId} onChange={(event)=> {onFormInput(-7, -7, event)}} name="courseId" placeholder="Course ID"></input>
+                    </div>
+                    <div>
+                        <div className="errorMessageSubHead">{error.courseId}</div>
                     </div>
                 </div>
             </div>
-
-            <div>---------------------------------------------------------------------------------------------------</div>
+            <div className="line"></div>
             <div className="subHeader2">
-                <div className="subHeader2Align">
-                    <div>
-                        {
-                            mainForm.courseLearning.map((point, index) => {
-                                return(
-                                    <div key={index}>
-                                        <input value={point} onChange={(event) => {onFormInput(-3, index, event)}} name="courseLearning" placeholder="Course Learnings"></input>
-                                        <button onClick={() => {removePoint('courseLearning', index)}}>Remove Form Field</button>
-                                        {renderButton(index, 'addLearning')}
-                                    </div>
-                                )
-                            })
-                        }   
-                    </div>
-                    <div className="errorMessage">{error.courseLearning}</div>
+                <div className="left">
+
                 </div>
-                <div>
-                    <div>
-                        {
-                            mainForm.preRequisite.map((point, index) => {
-                                return(
-                                    <div key={index}>
-                                        <input value={point} onChange={(event) => {onFormInput(-4, index, event)}} name="coursePreRequisite" placeholder="PreRequisites"></input>
-                                        <button onClick={() => {removePoint('preRequisite', index)}}>Remove Form Field</button>
-                                        {renderButton(index, 'addPreReq')}
-                                    </div>                            
-                                )
-                            })
-                        }
+                <div className="right">
+                    <div className="subHeader2Align">
+                        <div>
+                            {
+                                mainForm.courseLearning.map((point, index) => {
+                                    return(
+                                        <div key={index}>
+                                            <input className="inputClass" value={point} onChange={(event) => {onFormInput(-3, index, event)}} name="courseLearning" placeholder="Course Learnings"></input>
+                                            <button className="buttonClass" onClick={() => {removePoint('courseLearning', index)}}>Remove Form Field</button>
+                                            {renderButton(index, 'addLearning')}
+                                        </div>
+                                    )
+                                })
+                            }   
+                        </div>
+                        <div className="errorMessage">{error.courseLearning}</div>
                     </div>
-                    <div className="errorMessage">{error.preRequisite}</div>
+                    <div>
+                        <div>
+                            {
+                                mainForm.preRequisite.map((point, index) => {
+                                    return(
+                                        <div key={index}>
+                                            <input className="inputClass" value={point} onChange={(event) => {onFormInput(-4, index, event)}} name="coursePreRequisite" placeholder="PreRequisites"></input>
+                                            <button className="buttonClass" onClick={() => {removePoint('preRequisite', index)}}>Remove Form Field</button>
+                                            {renderButton(index, 'addPreReq')}
+                                        </div>                            
+                                    )
+                                })
+                            }
+                        </div>
+                        <div className="errorMessage">{error.preRequisite}</div>
+                    </div>
                 </div>
             </div>
-            <div>***********************************************************</div>
+            <div className="line"></div>
             <div className="section">
                 {
                     mainForm.course.map((section, sectionIndex) => {
                         return(
                             <div key={sectionIndex}>
-                                <div>-----------------------------------------------------------------------------------------------------------------------------------------------------------</div>
+                                {returnLine(sectionIndex)}
                                 <div className="sectionTitle">
-                                    <input value={section.sectionTitle} onChange={(event) => {onFormInput(sectionIndex, -1, event)}} name="sectionTitle" placeholder="Add Section Title"></input>
+                                    <input className="inputClass" value={section.sectionTitle} onChange={(event) => {onFormInput(sectionIndex, -1, event)}} name="sectionTitle" placeholder="Add Section Title"></input>
                                     <div className="errorMessage">{error.course[sectionIndex].sectionTitle}</div>
                                 </div>
                                 <div>
@@ -505,37 +520,41 @@ const AddCourse = () => {
                                             section.lectures.map((element, index) => {
                                                 return(
                                                     <div className="lectures" key={index}>
-                                                        <input value={element.title} name="title" onChange={(event) => {onFormInput(sectionIndex, index, event)}} placeholder="Add Title"></input>
-                                                        <div className="errorMessage">{error.course[sectionIndex].lectures[index].title}</div>
-                                                        <input value={element.description} name="description" onChange={(event) => {onFormInput(sectionIndex, index, event)}} placeholder="Add Lecture Description"></input>
-                                                        <div className="errorMessage">{error.course[sectionIndex].lectures[index].description}</div>
-                                                        <CustomUploadButton currentIndexForm={returnFormData} setVideoId={setVideoId} index={index} sectionIndex={sectionIndex}/>
-                                                        <button onClick={() => {removeLecture(sectionIndex, index)}}>Remove Form Field</button>                                     
+                                                        <div>
+                                                            <input className="inputClassSmallDiv" value={element.title} name="title" onChange={(event) => {onFormInput(sectionIndex, index, event)}} placeholder="Add Title"></input>
+                                                            <div className="errorMessage">{error.course[sectionIndex].lectures[index].title}</div>    
+                                                        </div>
+                                                        <div>
+                                                            <input className="inputClassSmallDiv" value={element.description} name="description" onChange={(event) => {onFormInput(sectionIndex, index, event)}} placeholder="Add Lecture Description"></input>
+                                                            <div className="errorMessage">{error.course[sectionIndex].lectures[index].description}</div>
+                                                        </div>
+                                                        <div><CustomUploadButton currentIndexForm={returnFormData} setVideoId={setVideoId} index={index} sectionIndex={sectionIndex}/></div>
+                                                        <div><button className="smallDivButtonClass" onClick={() => {removeLecture(sectionIndex, index)}}>Remove Form Field</button></div>                                   
                                                     </div>
                                                 )
                                                 })
                                         }
                                     </div>
-                                    <button onClick={() => {addLecture(sectionIndex)}}>Add Lecture</button>
+                                    <button className="buttonClass" onClick={() => {addLecture(sectionIndex)}}>Add Lecture</button>
                                 </div>
                             </div>
                         )
                     })
                 }
+                <div className="addSec">
+                    <button className="buttonClass" onClick={() => {addSection()}}>Add Section</button>
+                </div>
             </div>
-            <div className="addSec">
-                    <button onClick={() => {addSection()}}>Add Section</button>
-            </div>
-            <div>===================================================================================================================</div>
+            <div className="line"></div>
             <div className="priceSection">
                 <div className="priceSec">
-                    <input name="coursePrice" onChange={(event) => {onFormInput(-5, -5, event)}} placeholder="Course Price"></input>
+                    <input className="inputClass" onChange={(event) => {onFormInput(-5, -5, event)}} placeholder="Course Price"></input>
                     <div className="errorMessage">{error.coursePrice}</div>
                 </div>
             </div>
-            <div>***********************************************************</div>
+            <div className="line"></div>
             <div className="submit">
-                <button type="submit" placeholder="Submit">Submit</button>
+                <button className="buttonClass" type="submit" placeholder="Submit">Submit</button>
             </div>
             <div>
                 {}
