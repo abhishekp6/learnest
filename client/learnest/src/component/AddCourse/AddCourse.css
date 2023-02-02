@@ -3,12 +3,12 @@
 .container{
     width: 98%;
     height: fit-content;
-    background-color: rgb(150, 190, 207);
+    background-color: rgb(255, 255, 255);
     font-family: 'Poppins', sans-serif;
 }
 
 .inputClass{
-    border: 0;
+    border: 1px solid black;
     width: 26.5%;
     height: 4vh;
     font-size: inherit;
@@ -28,7 +28,7 @@
 }
 
 .inputClassSmallDiv{
-    border: 0;
+    border: 1px solid black;
     width: 89%;
     height: 4vh;
     font-size: inherit;
@@ -47,23 +47,18 @@
 }
 
 .buttonClass{
-    width: 20%;
-    height: 4vh;
+    width: 10%;
+    height: 5vh;
     background-image: linear-gradient(to left, #2525d6bd, #0101add1);
     border: 0;
-    border-radius: 2px;
-    color: lightgrey;
+    border-radius: 6px;
+    color: white;
     margin-right: 5px;
+    font-size: 0.9rem;
 }
 
-.smallDivButtonClass{
-    width: 80%;
-    height: 4vh;
-    background-image: linear-gradient(to left, #2525d6bd, #0101add1);
-    border: 0;
-    border-radius: 2px;
-    color: lightgrey;
-    margin: 5px;
+.buttonClass:hover{
+    cursor: pointer;
 }
 
 .line{
@@ -86,11 +81,12 @@
 }
 
 .headerSec{
-    height: 8vh;
+    height: 12vh;
     width: 100%;
     border-radius: 10px;
-    background-image: linear-gradient(to left, blue, darkblue);
+    background-color: white;
     margin-bottom: 5vh;
+    border: 2px solid black;
 }
 
 .subHeader{
@@ -131,6 +127,7 @@
 }
 
 .addSec{
+    margin-top: 25px;
     width: 100%;
     height: fit-content;
 }
@@ -147,10 +144,6 @@
 
 .priceSection{
     display: flex;
-}
-
-.addSec{
-    margin-top: 25px;
 }
 
 .sectionTitle{

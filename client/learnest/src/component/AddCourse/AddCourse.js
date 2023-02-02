@@ -5,6 +5,8 @@ import { useState } from "react";
 import axios from "axios";
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 import CustomUploadButton from "../Upload/CustomUploadButton";
 import environment from "../../config/Config";
@@ -383,15 +385,21 @@ const AddCourse = () => {
         };
     }
 
-    const renderButton = (index, name) => {
-        if(index === mainForm.courseLearning.length-1 && name === 'addLearning'){
+    const renderButton = (index, name, sectionIndex=-1) => {
+        if(name === 'addLearning' && index === mainForm.courseLearning.length-1){
             return (
-                <button className="buttonClass" onClick={() => {addLearning()}}>Add Point</button>
+                
+                <button onClick={() => {addLearning()}}><AddIcon /></button>
             )
         }
-        if(index === mainForm.preRequisite.length-1 && name === 'addPreReq'){
+        if(name === 'addPreReq' && index === mainForm.preRequisite.length-1){
             return (
-                <button className="buttonClass" onClick={() => {addPreRequisite()}}>Add Point</button>
+                <button onClick={() => {addPreRequisite()}}><AddIcon /></button>
+            )
+        }
+        if(name === 'lecture' && index === mainForm.course[sectionIndex].lectures.length-1){
+            return (
+                <button onClick={() => {addLecture(sectionIndex)}}><AddIcon /></button>
             )
         }
     }
@@ -476,7 +484,7 @@ const AddCourse = () => {
                                     return(
                                         <div key={index}>
                                             <input className="inputClass" value={point} onChange={(event) => {onFormInput(-3, index, event)}} name="courseLearning" placeholder="Course Learnings"></input>
-                                            <button className="buttonClass" onClick={() => {removePoint('courseLearning', index)}}>Remove Form Field</button>
+                                            <button onClick={() => {removePoint('courseLearning', index)}}><RemoveIcon /></button>
                                             {renderButton(index, 'addLearning')}
                                         </div>
                                     )
@@ -492,7 +500,7 @@ const AddCourse = () => {
                                     return(
                                         <div key={index}>
                                             <input className="inputClass" value={point} onChange={(event) => {onFormInput(-4, index, event)}} name="coursePreRequisite" placeholder="PreRequisites"></input>
-                                            <button className="buttonClass" onClick={() => {removePoint('preRequisite', index)}}>Remove Form Field</button>
+                                            <button onClick={() => {removePoint('preRequisite', index)}}><RemoveIcon /></button>
                                             {renderButton(index, 'addPreReq')}
                                         </div>                            
                                     )
@@ -529,13 +537,15 @@ const AddCourse = () => {
                                                             <div className="errorMessage">{error.course[sectionIndex].lectures[index].description}</div>
                                                         </div>
                                                         <div><CustomUploadButton currentIndexForm={returnFormData} setVideoId={setVideoId} index={index} sectionIndex={sectionIndex}/></div>
-                                                        <div><button className="smallDivButtonClass" onClick={() => {removeLecture(sectionIndex, index)}}>Remove Form Field</button></div>                                   
+                                                        <div>
+                                                            <button onClick={() => {removeLecture(sectionIndex, index)}}><RemoveIcon /></button>
+                                                            {renderButton(index, 'lecture', sectionIndex)}
+                                                        </div>                          
                                                     </div>
                                                 )
                                                 })
                                         }
                                     </div>
-                                    <button className="buttonClass" onClick={() => {addLecture(sectionIndex)}}>Add Lecture</button>
                                 </div>
                             </div>
                         )
