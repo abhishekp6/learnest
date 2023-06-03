@@ -8,10 +8,6 @@ const Popup = (props) => {
 
     const [videoUrl, setVideoUrl] = useState("");
 
-    useEffect(() => {
-        getVideo();
-    }, [props]);
-
     //Get fresh token
     const getVideo = async () => {
         let tokenData = await axios.get(environment.GET_CUSTOM_UPLOAD_TOKEN);
@@ -25,6 +21,10 @@ const Popup = (props) => {
         const videoUrl = videoData?.data?.assets?.mp4;
         setVideoUrl(videoUrl);
     }
+
+    useEffect(() => {
+        getVideo();
+    }, [props]);
 
     return (props.trigger) ? (
         <div className="mainPopup">
