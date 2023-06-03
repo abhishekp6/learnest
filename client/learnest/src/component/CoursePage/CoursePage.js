@@ -140,7 +140,7 @@ const CoursePage = () => {
                                         </AccordionSummary>
                                         <AccordionDetails>
                                             {
-                                                section?.sectionData?.map((lecture, index) => {
+                                                section?.lectures?.map((lecture, index) => {
                                                     return(
                                                         <Typography>
                                                             <Accordion>
