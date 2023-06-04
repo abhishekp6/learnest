@@ -1,6 +1,6 @@
 
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import axios from "axios";
 import Snackbar from '@mui/material/Snackbar';
@@ -11,6 +11,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import CustomUploadButton from "../Upload/CustomUploadButton";
 import environment from "../../config/Config";
 import './AddCourse.css';
+import { useLocation, useParams } from "react-router-dom";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -61,9 +62,87 @@ const AddCourse = () => {
     const [errorSnack, setErrorSnack] = React.useState(false);
     const [success, setSuccess] = React.useState(false);
 
-    // Center Align States for Snackbar
-    const [vertical, setVertical] = React.useState('bottom');
-    const [horizontal, setHorizontal] = React.useState('center');
+    // States to align snackbar
+    const [vertical] = React.useState('bottom');
+    const [horizontal] = React.useState('center');
+
+    /****************** Update Route Flow Begin ********************/
+
+    // Check if current route is 'Update Course'
+    const currentUrl = useLocation();
+    const currentRoute = currentUrl.pathname;
+    const { courseId } = useParams()
+
+    const patchCourseData = (data) => {
+
+        // Patch main form with course data
+        let populatedForm = JSON.parse(JSON.stringify(mainForm));
+        
+        populatedForm.courseId = data.courseId;
+        populatedForm.courseTitle = data.courseTitle;
+        populatedForm.courseOverView = data.courseOverView;
+        populatedForm.courseLearning = data.courseLearning;
+        populatedForm.preRequisite = data.preRequisite;
+        populatedForm.coursePrice = data.coursePrice;
+
+        let lectureTemplate = {"title": "", "description": "", "videoId":""};
+        let courseTemplate = {
+                                "sectionTitle": "",
+                                "lectures": [{"title": "", "description": "", "videoId":""}]
+                             };
+
+        data.course.forEach((courseObj, index) => {
+            if(index === 0){
+                populatedForm.course[index].sectionTitle = courseObj.sectionTitle; 
+                courseObj.lectures.forEach((lecture, ind) => {
+                    if(ind === 0){
+                        populatedForm.course[index].lectures[ind].title = lecture.title;
+                        populatedForm.course[index].lectures[ind].description = lecture.description;
+                        populatedForm.course[index].lectures[ind].videoId = lecture.videoId;
+                    }else{
+                        populatedForm.course[index].lectures[ind] = lecture;
+
+                        // Update Error Object
+                        error.course[index].lectures[ind] = lectureTemplate;
+                    }
+                })
+            }else{
+                populatedForm.course[index] = courseObj;
+
+                //Update Error Object
+                let lectureLength = courseObj.lectures.length;
+                error.course[index] = courseTemplate;
+                while(error.course[index].lectures.length != lectureLength){
+                    error.course[index].lectures.push(lectureTemplate);
+                }
+            }
+        })
+
+        setMainForm(populatedForm);
+    }
+
+    const getCourseData = async () => {
+        const getCourseData = await axios.get(`${environment.GET_COURSE_BY_ID}${courseId}`);
+        let courseData = getCourseData.data;
+        console.log(courseData, "COURSEDATA")
+        // Patch Course Data
+        patchCourseData(courseData);
+    }
+
+    const setInitialData = () => {
+        if(currentRoute.includes('update')){
+            // Current Route is Update course
+            console.log("Current Route Update")
+            // Get course data by course id
+            getCourseData();
+        }
+    }
+
+    useEffect(() => {
+        setInitialData();
+    }, []);
+
+    /****************** Update Route Flow End ********************/
 
     const onFormInput = (sectionIndex, index, event) => {
         console.log(sectionIndex, index, event.target.value, event.target.name)
@@ -214,9 +293,16 @@ const AddCourse = () => {
 
         if(allowSubmit === true){
             try {
-                let saveCourseData = await axios.post(environment.SAVE_COURSE, mainForm);   
-                if(saveCourseData){ // To be handled based on response
-                    handleClickSnackbar("success");
+                if(currentRoute.includes('update')){
+                    let saveCourseData = await axios.patch(environment.UPDATE_COURSE, mainForm); 
+                    if(saveCourseData){ // To be handled based on response
+                        handleClickSnackbar("success");
+                    }
+                }else{
+                    let saveCourseData = await axios.post(environment.SAVE_COURSE, mainForm);
+                    if(saveCourseData){ // To be handled based on response
+                        handleClickSnackbar("success");
+                    }
                 }
             } catch (error) {
                 console.log(error);
@@ -424,7 +510,7 @@ const AddCourse = () => {
     }
 
     const returnLine = (index) => {
-        if(index != 0){
+        if(index !== 0){
             return (
                 <div className="sectionLine"></div>
             );
@@ -558,7 +644,7 @@ const AddCourse = () => {
             <div className="line"></div>
             <div className="priceSection">
                 <div className="priceSec">
-                    <input className="inputClass" onChange={(event) => {onFormInput(-5, -5, event)}} placeholder="Course Price"></input>
+                    <input className="inputClass" value={mainForm.coursePrice} onChange={(event) => {onFormInput(-5, -5, event)}} placeholder="Course Price"></input>
                     <div className="errorMessage">{error.coursePrice}</div>
                 </div>
             </div>

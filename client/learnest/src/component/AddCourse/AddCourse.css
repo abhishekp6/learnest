@@ -17,7 +17,7 @@
     border-radius: 0.2rem;
     outline: none;
     transition: width 0.4s ease-in-out;
-    color: gray;
+    color: rgb(0, 0, 0);
     font-family: 'Poppins', sans-serif;
     margin-right: 1.5rem;
 }
@@ -37,7 +37,7 @@
     border-radius: 0.2rem;
     outline: none;
     transition: width 0.4s ease-in-out;
-    color: gray;
+    color: rgb(0, 0, 0);
     font-family: 'Poppins', sans-serif;
 }
 

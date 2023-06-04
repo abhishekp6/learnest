@@ -9,7 +9,8 @@ const LandingPage = () => {
     return (
         <div>
             <Routes>
-                <Route path="/add/Course" element={<AddCourse />} />
+                <Route path="/add/course" element={<AddCourse />} />
+                <Route path="/update/course/:courseId" element={<AddCourse />} />
                 <Route path="/admin" element={<AdminPanel />} />
                 <Route path="/payment" element={<Payments />} />
                 <Route path="/course/:courseId" element={<CoursePage />} />
