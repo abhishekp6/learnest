@@ -13,7 +13,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import environment from "../../config/Config";
 import './CoursePage.css';
 
-import Popup from "../../Utilities/Popup";
+import Popup from "../../Utilities/Popup/Popup";
 
 const CoursePage = () => {
 

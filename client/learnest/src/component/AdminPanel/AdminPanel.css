@@ -1,6 +1,36 @@
-.container{
-    height: 1000px;
-    width: 100%;
-    background-color: azure;
-    padding: 1rem;
+.adminContainer{
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+}
+
+.leftDiv{
+    height: 100vh;
+    border: dotted grey 2px;
+}
+
+.rightDiv{
+    height: 100vh;
+    border: dotted grey 2px;
+}
+    
+.centerDiv{
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 30% 70%;
+}
+
+.centerTop{
+    border: dotted grey 2px;
+    text-align: center;
+}
+
+.centerBottom{
+    border: dotted grey 2px;
+}
+
+.buttonStyle{
+    height: fit-content;
+    width: 120px;
+    white-space: nowrap;
+    justify-content: center ;
 }

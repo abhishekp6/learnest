@@ -54,3 +54,30 @@ exports.saveCourse = async (req, res, next) => {
         res.status(500).send({"Status": "Internal Server Error", "Error": error});
     }
   }
+
+  exports.featchAll = async (req, res, next) => {
+    try {
+
+      let allCourse = await CourseSchema.find({});
+      res.status(200).send({"Status": "Success", "data": allCourse});
+
+    } catch (error) {
+        res.status(500).send({"Status": "Internal Server Error", "Error": error});
+    }
+  }
+
+  exports.deleteCourse = async (req, res, next) => {
+    try {
+       // Validations
+      if(!req.params || !req.params.courseId){
+        return res.status(400).send({"statusMessage": "Invalid Request! Missing Params"});
+      }
+
+      let filter = {"courseId": req.params.courseId};
+      await CourseSchema.findOneAndDelete(filter);
+      res.status(200).send({"Status": "Course deleted successfully", "courseId": req.params.courseId});
+
+    } catch (error) {
+        res.status(500).send({"Status": "Internal Server Error", "Error": error});
+    }
+  }

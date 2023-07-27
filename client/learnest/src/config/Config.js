@@ -6,7 +6,9 @@ const environment = {
     "RAZORPAY_CHECKOUT": "https://checkout.razorpay.com/v1/checkout.js",
     "GET_COURSE_BY_ID": "http://localhost:4000/api/v1/get/courseById/",
     "SAVE_COURSE": "http://localhost:4000/api/v1/save/course",
-    "UPDATE_COURSE": "http://localhost:4000/api/v1/update/course"
+    "UPDATE_COURSE": "http://localhost:4000/api/v1/update/course",
+    "DELETE_COURSE": "http://localhost:4000/api/v1/delete/course/",
+    "GET_ALL_COURSE": "http://localhost:4000/api/v1/fetch/all/course"
 }
 
 export default environment;

@@ -1,0 +1,17 @@
+.card{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    height: 200px;
+    width: 98%;
+    border: solid black 2px;
+}
+
+.left{
+    border: dotted grey 2px;
+    margin: 5px;
+}
+
+.right{
+    margin: 5px;
+}
+

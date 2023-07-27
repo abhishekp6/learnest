@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import './Popup.css';
 import CloseIcon from '@mui/icons-material/Close';
 import axios from "axios";
-import environment from "../config/Config";
+import environment from "../../config/Config";
 
 const Popup = (props) => {
 
