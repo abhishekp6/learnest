@@ -6,12 +6,12 @@
     border: solid black 2px;
 }
 
-.left{
+.leftCard{
     border: dotted grey 2px;
     margin: 5px;
 }
 
-.right{
+.rightCard{
     margin: 5px;
 }
 

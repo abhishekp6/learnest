@@ -518,7 +518,7 @@ const AddCourse = () => {
     }
 
     return(
-        <form className="container" onSubmit={handleSubmit}>
+        <form className="containerCourse" onSubmit={handleSubmit}>
 
             {/* <div className="courseBanner">
                 <div>Upload Course Banner</div>

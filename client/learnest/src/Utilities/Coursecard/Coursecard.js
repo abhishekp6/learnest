@@ -1,18 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import './Coursecard.css';
 
 const Coursecard = (props) => {
 
-    useEffect(() => {
-        console.log(props);
-    }, []);
-
     return (
         <div className="card">
-            <div className="left">
+            <div className="leftCard">
                 
             </div>
-            <div className="right">
+            <div className="rightCard">
                 <h3>{props.data.courseTitle}</h3>
                 <p>{props.data.courseOverView}</p>
                 <p>Price : {props.data.coursePrice} $</p>

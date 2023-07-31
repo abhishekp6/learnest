@@ -61,12 +61,12 @@ const AdminPanel = () => {
                 </div>
                 <div>
                     <form onSubmit={routeToUpdate}>
-                        <input value={courseIdUpdate} onChange={(event) => { onInputChange(event, 'update')}}></input>
+                        <input value={courseIdUpdate} onChange={(event) => { onInputChange(event, 'update')}} class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-sm p-2.5 "></input>
                         <button type="submit" className="buttonStyle">Update Course</button>
                     </form>
                 </div>
                 <div>
-                    <input value={courseIdDelete} onChange={(event) => { onInputChange(event, 'delete')}}></input>
+                    <input value={courseIdDelete} onChange={(event) => { onInputChange(event, 'delete')}} class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-sm p-2.5"></input>
                     <button onClick={() => {deleteCourse()}} className="buttonStyle">Delete Course</button>
                 </div>
             </div>

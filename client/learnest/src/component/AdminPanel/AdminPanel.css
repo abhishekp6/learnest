@@ -30,7 +30,10 @@
 
 .buttonStyle{
     height: fit-content;
-    width: 120px;
+    width: 130px;
     white-space: nowrap;
-    justify-content: center ;
+    justify-content: center;
+    border: solid black;
+    border-radius: 5px;
+    margin: 5px;
 }
