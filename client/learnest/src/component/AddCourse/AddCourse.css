@@ -87,7 +87,10 @@
     border-radius: 10px;
     background-color: white;
     margin-bottom: 5vh;
-    border: 2px solid black;
+    margin-top: 2vh;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 12vh;
 }
 
 .subHeader{

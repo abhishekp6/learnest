@@ -112,7 +112,7 @@ const AddCourse = () => {
                 //Update Error Object
                 let lectureLength = courseObj.lectures.length;
                 error.course[index] = courseTemplate;
-                while(error.course[index].lectures.length != lectureLength){
+                while(error.course[index].lectures.length !== lectureLength){
                     error.course[index].lectures.push(lectureTemplate);
                 }
             }
@@ -140,7 +140,7 @@ const AddCourse = () => {
 
     useEffect(() => {
         setInitialData();
-    }, []);
+    });
 
     /****************** Update Route Flow End ********************/
 
@@ -528,7 +528,7 @@ const AddCourse = () => {
             </div> */}
 
             <div className="headerSec">
-
+                <p>Lets get your first course added !!</p>
             </div>
 
             <div className="subHeader">

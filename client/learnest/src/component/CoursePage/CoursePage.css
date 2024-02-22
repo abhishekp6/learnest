@@ -30,38 +30,35 @@
 .header{
     background-image: linear-gradient(to right, #0023ffc7, #0023ff80);
     height: 24vh;
-    width: 100%;
     border-radius: 5px;
+    margin: 1vh;
+    padding-left: 1.2%;
 }
 
 .heading{
     font-family: 'Poppins', sans-serif;
     color: white;
-    height: 12vh;
+    height: 13vh;
     font-size: 2.5rem;
     line-height: 12vh;
-    padding-left: 5%;
+    padding-top: 2.5vh;
 }
 
 .desc{
     font-family: 'Poppins', sans-serif;
     color: white;
-    padding-left: 5%;
-    height: 12vh;
-    line-height: 8vh;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
 }
 
 .midSection{
     display: grid;
     grid-template-columns: 49.5% 1% 49.5%;
-    margin-top: 1vh;
+    margin: 1vh;
 }
 
 .learning{
     height: fit-content;
-    padding-left: 10px;
-    padding-top: 10px;
+    padding: 10px;
     display: grid;
     grid-template-columns: 50% 50%;
 }
@@ -151,9 +148,10 @@
 }
 
 .content{
-    width: 100%;
     height: fit-content;
     background-color: lightgray;
+    margin: 1vh;
+    border-radius: 5px;
 }
 
 .contentHeading{
@@ -172,6 +170,7 @@
     width: 50%;
     position: relative;
     left: 20rem;
+    padding-bottom: 2vh;
 }
 
 .linkToVideo:hover{
