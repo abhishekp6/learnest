@@ -58,7 +58,14 @@ const Login = () => {
           <button onClick={logOut}>Log out</button>
         </div>
       ) : (
-        <button onClick={() => login()}>Sign in with Google 🚀 </button>
+        <div className="login-container">
+          <div className="login-box">
+            <h2>Lets get you going!</h2>
+            <button className="google-login-btn" onClick={() => login()}>
+              Login with Google 🚀
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );

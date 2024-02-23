@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import environment from "../../config/Config";
 import config from "../../config/SecretConfig";
+import './Payment.css';
 
 const Payments = () => {
 
@@ -74,11 +75,18 @@ const Payments = () => {
 
     }
 
-    return(
-        <div>
-            <input placeholder="Enter Amount" type="text" onChange={(event) => {onInputChange(event)}}/>
-            <button onClick={() => {intiatePayment()}}>Pay</button>
+    return (
+      <div>
+        <div className="payment-container">
+          <div className="payment-box">
+            <h2>Make a Payment</h2>
+            <input placeholder="Enter Amount" type="text" className="payment-input" onChange={(event) => {onInputChange(event);}} />
+            <button className="pay-btn" onClick={() => {intiatePayment();}}>
+              Pay
+            </button>
+          </div>
         </div>
+      </div>
     );
 }
 
