@@ -28,7 +28,7 @@
   }
 
 .header{
-    background-image: linear-gradient(to right, #0023ffc7, #0023ff80);
+    background-color: #007bff;
     height: 24vh;
     border-radius: 5px;
     margin: 1vh;
@@ -54,6 +54,7 @@
     display: grid;
     grid-template-columns: 49.5% 1% 49.5%;
     margin: 1vh;
+    color: rgb(64, 64, 64);
 }
 
 .learning{
@@ -149,14 +150,14 @@
 
 .content{
     height: fit-content;
-    background-color: lightgray;
+    background-color: #f4f4f4;
     margin: 1vh;
     border-radius: 5px;
 }
 
 .contentHeading{
     font-family: 'Poppins', sans-serif;
-    color: black;
+    color: rgb(64, 64, 64);
     height: 12vh;
     font-size: 1.5rem;
     line-height: 12vh;
@@ -170,7 +171,7 @@
     width: 50%;
     position: relative;
     left: 20rem;
-    padding-bottom: 2vh;
+    padding-bottom: 19vh;
 }
 
 .linkToVideo:hover{

@@ -50,7 +50,7 @@
 .buttonClass{
     width: 10%;
     height: 5vh;
-    background-image: linear-gradient(to left, #2525d6bd, #0101add1);
+    background-color: #007bff;
     border: 0;
     border-radius: 6px;
     color: white;
