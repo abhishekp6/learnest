@@ -75,40 +75,38 @@ const Homepage = () => {
       </section>
 
       <div>
+        <div className='midHead'>
+          <h3>Featured Courses</h3>
+        </div>
         <div className='carousel'>
           <EmblaCarousel slides={SLIDES} options={OPTIONS} />
         </div>
       </div>
 
-      <section className='featured-courses'>
-        <div className='container'>
-          <h3>Featured Courses</h3>
-          <div className='course'>
-            <img src='https://img-b.udemycdn.com/course/240x135/625204_436a_3.jpg' alt='Course 1' />
-            <h4>Course Title 1</h4>
-            <p>Description of course 1</p>
-            <a href='#' className='btn btn-secondary'>
-              Enroll Now
-            </a>
-          </div>
-          <div className='course'>
-            <img src='https://img-b.udemycdn.com/course/240x135/1565838_e54e_18.jpg' alt='Course 2' />
-            <h4>Course Title 2</h4>
-            <p>Description of course 2</p>
-            <a href='#' className='btn btn-secondary'>
-              Enroll Now
-            </a>
-          </div>
-          <div className='course'>
-            <img src='https://img-b.udemycdn.com/course/240x135/965528_737d_7.jpg' alt='Course 3' />
-            <h4>Course Title 3</h4>
-            <p>Description of course 3</p>
-            <a href='#' className='btn btn-secondary'>
-              Enroll Now
-            </a>
+      <div className='body-section'>
+        <h2 className='section-header'>Why Choose Us</h2>
+        <div className='section'>
+          <img src='https://img-b.udemycdn.com/course/240x135/625204_436a_3.jpg' alt='Image 1' className='image' />
+          <div className='text'>
+            <h3>Quality Content</h3>
+            <p>Our courses offer top-notch content curated by industry experts.</p>
           </div>
         </div>
-      </section>
+        <div className='section'>
+          <div className='text'>
+            <h3>Flexible Learning</h3>
+            <p>Learn at your own pace with our flexible scheduling options.</p>
+          </div>
+          <img src='https://img-b.udemycdn.com/course/240x135/1565838_e54e_18.jpg' alt='Image 2' className='image' />
+        </div>
+        <div className='section'>
+          <img src='https://img-b.udemycdn.com/course/240x135/965528_737d_7.jpg' alt='Image 3' className='image' />
+          <div className='text'>
+            <h3>Expert Instructors</h3>
+            <p>Learn from the best with our team of experienced instructors.</p>
+          </div>
+        </div>
+      </div>
 
       <footer>
         <div className='container'>

@@ -109,17 +109,6 @@ header nav ul li a:hover {
   color: #fff;
 }
 
-.featured-courses {
-  padding: 80px 0;
-  text-align: center;
-}
-
-.featured-courses h3 {
-  margin-bottom: 40px;
-  font-size: 28px;
-  color: #333;
-}
-
 .course {
   margin-bottom: 40px;
 }
@@ -147,6 +136,48 @@ footer {
   text-align: center;
 }
 
+.midHead {
+  text-align: center;
+  margin-top: 3vh;
+  font-size: 1.6rem;
+}
+
 .carousel {
-  margin-top: 20px;
+  margin-top: 25px;
+}
+
+.body-section {
+  text-align: center;
+}
+
+.section-header {
+  font-size: 1.6rem;
+  margin: 20px 20px;
+}
+
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 40px;
+  height: 30vh;
+}
+
+.image {
+  max-width: 40%;
+  border-radius: 10px;
+  height: 27vh;
+}
+
+.text {
+  max-width: 40%;
+}
+
+.text h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.text p {
+  font-size: 16px;
 }
