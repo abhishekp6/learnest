@@ -5,9 +5,23 @@ import './Homepage.css'
 
 const Homepage = () => {
   let navigate = useNavigate()
-  const OPTIONS = { align: 'start', loop: true }
-  const SLIDE_COUNT = 5
-  const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
+  const OPTIONS = {
+    align: 'start',
+    loop: true,
+    containScroll: 'keepSnaps',
+    dragFree: true,
+  }
+  const SLIDES = [
+    'https://img-b.udemycdn.com/course/240x135/625204_436a_3.jpg',
+    'https://img-b.udemycdn.com/course/240x135/1565838_e54e_18.jpg',
+    'https://img-b.udemycdn.com/course/240x135/965528_737d_7.jpg',
+    'https://img-b.udemycdn.com/course/240x135/625204_436a_3.jpg',
+    'https://img-b.udemycdn.com/course/240x135/1565838_e54e_18.jpg',
+    'https://img-b.udemycdn.com/course/240x135/965528_737d_7.jpg',
+    'https://img-b.udemycdn.com/course/240x135/625204_436a_3.jpg',
+    'https://img-b.udemycdn.com/course/240x135/1565838_e54e_18.jpg',
+    'https://img-b.udemycdn.com/course/240x135/965528_737d_7.jpg',
+  ]
 
   return (
     <div className='App'>

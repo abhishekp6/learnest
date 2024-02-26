@@ -36,7 +36,27 @@
   align-items: center;
   justify-content: center;
   height: var(--slide-height);
+  overflow: hidden;
+  /* Ensure the image doesn't overflow the container */
+  position: relative;
+  /* Establishes a positioning context for children */
 }
+
+.embla__slide__number img {
+  position: absolute;
+  /* Position the image relative to its container */
+  top: 0;
+  /* Position at the top of the container */
+  left: 0;
+  /* Position at the left of the container */
+  width: 100%;
+  /* Ensure the image takes the full width of the container */
+  height: 100%;
+  /* Ensure the image takes the full height of the container */
+  object-fit: cover;
+  /* Scale the image while preserving its aspect ratio */
+}
+
 
 .embla__controls {
   display: grid;
