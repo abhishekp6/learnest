@@ -5,7 +5,6 @@ import AddCourse from './AddCourse/AddCourse'
 import Payments from './PaymentIntegration/Payment'
 import CoursePage from './CoursePage/CoursePage'
 import ViewAllCourses from './ViewAllCourses/ViewAllCourses'
-import Login from './Authentication/Login'
 import Homepage from './Homepage/Homepage'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import config from '../config/SecretConfig'
@@ -22,7 +21,6 @@ const LandingPage = () => {
           <Route path='/payment' element={<Payments />} />
           <Route path='/course/:courseId' element={<CoursePage />} />
           <Route path='/view/all' element={<ViewAllCourses />} />
-          <Route path='/login' element={<Login />} />
         </Routes>
       </div>
     </GoogleOAuthProvider>

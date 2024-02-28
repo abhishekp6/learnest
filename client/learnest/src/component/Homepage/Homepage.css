@@ -181,3 +181,28 @@ footer {
 .text p {
   font-size: 16px;
 }
+
+.login-btn:hover {
+  cursor: pointer;
+}
+
+.logout-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #4285F4;
+  border: none;
+  color: white;
+  font-size: 24px;
+  font-weight: lighter;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rightNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

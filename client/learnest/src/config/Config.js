@@ -9,6 +9,7 @@ const environment = {
   UPDATE_COURSE: 'http://localhost:4000/api/v1/update/course',
   DELETE_COURSE: 'http://localhost:4000/api/v1/delete/course/',
   GET_ALL_COURSE: 'http://localhost:4000/api/v1/fetch/all/course',
+  GOOGLE_USER_INFO: 'https://www.googleapis.com/oauth2/v1/userinfo?access_token=',
 }
 
 export default environment
