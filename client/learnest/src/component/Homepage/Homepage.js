@@ -11,6 +11,7 @@ import environment from '../../config/Config'
 const Homepage = () => {
   const [profile, setProfile] = useState(null)
   const [loggedIn, setLoggedIn] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
   let navigate = useNavigate()
 
   const login = useGoogleLogin({
@@ -56,13 +57,32 @@ const Homepage = () => {
     setLoggedIn(false)
   }
 
+  const toggleDropdown = () => {
+    console.log('Toggledriopkns', isOpen)
+    setIsOpen(!isOpen)
+  }
+
+  const showLogoutDropdown = () => {
+    if (isOpen) {
+      return (
+        <div className='dropdownMenu'>
+          <div className='triangle-up'></div>
+          <button className='logout-btn' onClick={() => logOut()}>
+            Logout
+          </button>
+        </div>
+      )
+    }
+  }
+
   const loginSection = () => {
     if (loggedIn) {
       return (
         <li>
-          <a className='logout-btn' onClick={() => logOut()}>
+          <a onClick={toggleDropdown} className='logout-sec'>
             {profile?.name[0]}
           </a>
+          {showLogoutDropdown()}
         </li>
       )
     } else {
