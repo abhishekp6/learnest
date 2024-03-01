@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
 import environment from '../../config/Config'
+import config from '../../config/SecretConfig'
 import './CoursePage.css'
 
 import Popup from '../../Utilities/Popup/Popup'
@@ -35,9 +36,17 @@ const CoursePage = () => {
     /* Step 1: Get Video URL By Id */
   }
 
+  const setRazorpayEnv = () => {
+    const script = document.createElement('script')
+    script.src = environment.RAZORPAY_CHECKOUT
+    script.async = true
+    document.body.appendChild(script)
+  }
+
   useEffect(() => {
     console.log(`${environment.GET_COURSE_BY_ID}${courseId}`, 'HERE')
     getData()
+    setRazorpayEnv()
   }, [])
 
   const setPopupData = (videoId) => {
@@ -49,11 +58,72 @@ const CoursePage = () => {
     setOpenPopup(false)
   }
 
+  const intiatePayment = async () => {
+    console.log('Payment_Initiated_with_Amount', courseData?.coursePrice)
+    let amountInPaisa = courseData?.coursePrice ? courseData?.coursePrice * 100 : 0
+
+    const options = {
+      key: config.RAZORPAY_KEY_ID,
+      amount: 0,
+      name: '',
+      description: '',
+      order_id: '',
+      handler: function (response) {
+        console.log(response)
+        var values = {
+          razorpay_signature: response.razorpay_signature,
+          razorpay_order_id: response.razorpay_order_id,
+          transactionid: response.razorpay_payment_id,
+          transactionamount: courseData?.coursePrice ? courseData?.coursePrice : 0,
+        }
+        axios
+          .post(environment.VERIFY_PAYMENT, values)
+          .then(() => {
+            alert('Success')
+          })
+          .catch((e) => console.log(e))
+      },
+      prefill: {
+        name: 'First Last',
+        email: 'first@gmail.com',
+        contact: '1234567890',
+      },
+      notes: {
+        address: 'Hello World',
+      },
+      theme: {
+        color: '#528ff0',
+      },
+    }
+
+    // Create Razorpay order
+    const createOrderPayload = {
+      amount: amountInPaisa,
+    }
+    try {
+      const orderDetails = await axios.post(environment.CREATE_ORDER, createOrderPayload)
+      console.log(orderDetails, 'ORDER_DETAILS')
+      options.order_id = orderDetails.data.id
+      options.amount = orderDetails.data.amount
+      const paymentPopup = new window.Razorpay(options)
+      paymentPopup.open()
+    } catch (error) {
+      console.log(error, 'Error')
+    }
+  }
+
   return (
     <div>
       <div className='header'>
         <div className='heading'>{courseData.courseTitle}</div>
         <div className='desc'>{courseData.courseOverView}</div>
+        <button
+          className='payment-btn'
+          onClick={() => {
+            intiatePayment()
+          }}>
+          Enroll now
+        </button>
       </div>
       <div className='midSection'>
         <div className='midSecLeft'>

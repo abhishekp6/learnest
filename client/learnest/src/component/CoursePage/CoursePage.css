@@ -163,18 +163,28 @@
     line-height: 12vh;
     padding-left: 2%;
     font-weight: 600;
-    position: relative;
-    left: 18rem;
+    text-align: center;
 }
 
 .accordianDiv{
     width: 50%;
     position: relative;
-    left: 20rem;
+    left: 23rem;
     padding-bottom: 19vh;
 }
 
 .linkToVideo:hover{
     color: rgb(0, 132, 255);
     cursor: pointer;
+}
+
+.payment-btn{
+    border: solid 2px #FFFFFF;
+    border-radius: 4px;
+    padding: 5px 20px;
+    color: white;
+    cursor: 'pointer';
+    position: absolute;
+    font-size: large;
+    right: 5%;
 }
