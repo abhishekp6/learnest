@@ -1,39 +1,21 @@
 .adminContainer{
-    display: grid;
-    grid-template-columns: 30% 40% 30%;
+    height: 100vh;
 }
 
-.leftDiv{
-    height: 100vh;
-    border: dotted grey 2px;
-}
-
-.rightDiv{
-    height: 100vh;
-    border: dotted grey 2px;
-}
-    
-.centerDiv{
-    height: 100vh;
-    display: grid;
-    grid-template-rows: 30% 70%;
-}
-
-.centerTop{
-    border: dotted grey 2px;
+.adminNavbar{
+    width: 100%;
+    height: 15vh;
     text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
+    background-color: #F5F5F5;
+    line-height: 15vh;
+    color: cadetblue;
 }
 
-.centerBottom{
-    border: dotted grey 2px;
-}
-
-.buttonStyle{
-    height: fit-content;
-    width: 130px;
-    white-space: nowrap;
-    justify-content: center;
-    border: solid black;
-    border-radius: 5px;
-    margin: 5px;
+.admin-center{
+    height: 80vh;
+    width: 100%;
+    text-align: center;
+    margin-top: 5vh;
 }
