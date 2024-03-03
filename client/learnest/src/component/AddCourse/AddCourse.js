@@ -272,6 +272,8 @@ const AddCourse = () => {
     lectureList.course[sectionIndex].lectures[index].videoId = videoId
     let renderVal = JSON.parse(JSON.stringify(lectureList))
     setMainForm(renderVal)
+    //Open Snackbar
+    handleClickSnackbar('success')
     console.log(mainForm, 'UPLOAD_SUCCESS')
   }
 
@@ -534,13 +536,6 @@ const AddCourse = () => {
 
   return (
     <form className='containerCourse' onSubmit={handleSubmit}>
-      {/* <div className="courseBanner">
-                <div>Upload Course Banner</div>
-                <div>
-                    <input className="inputClass" type="file" onChange={(event) => {onFormInput(-6, -6, event)}}/>
-                </div>
-            </div> */}
-
       <div className='headerSec'>
         <p>Lets get your first course added !!</p>
       </div>
@@ -549,7 +544,7 @@ const AddCourse = () => {
         <div className='subHeaderAlign'>
           <div>
             <input
-              className='inputClassSmallDiv'
+              className='w-96 p-2 border border-gray-300 rounded-md bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:bg-blue-50 text-center'
               value={mainForm.courseTitle}
               onChange={(event) => {
                 onFormInput(-1, -1, event)
@@ -564,7 +559,7 @@ const AddCourse = () => {
         <div className='subHeaderAlign'>
           <div>
             <input
-              className='inputClassSmallDiv'
+              className='w-96 p-2 border border-gray-300 rounded-md bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:bg-blue-50 text-center'
               value={mainForm.courseOverView}
               onChange={(event) => {
                 onFormInput(-2, -2, event)
@@ -579,7 +574,7 @@ const AddCourse = () => {
         <div className='subHeaderAlign'>
           <div>
             <input
-              className='inputClassSmallDiv'
+              className='w-96 p-2 border border-gray-300 rounded-md bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:bg-blue-50 text-center'
               value={mainForm.courseId}
               onChange={(event) => {
                 onFormInput(-7, -7, event)
@@ -602,7 +597,7 @@ const AddCourse = () => {
                 return (
                   <div key={index}>
                     <input
-                      className='inputClass'
+                      className='w-96 p-2 border border-gray-300 rounded-md bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:bg-blue-50 text-center'
                       value={point}
                       onChange={(event) => {
                         onFormInput(-3, index, event)
@@ -628,7 +623,7 @@ const AddCourse = () => {
                 return (
                   <div key={index}>
                     <input
-                      className='inputClass'
+                      className='w-96 p-2 border border-gray-300 rounded-md bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:bg-blue-50 text-center'
                       value={point}
                       onChange={(event) => {
                         onFormInput(-4, index, event)
@@ -658,7 +653,7 @@ const AddCourse = () => {
               {returnLine(sectionIndex)}
               <div className='sectionTitle'>
                 <input
-                  className='inputClass'
+                  className='w-96 p-2 border border-gray-300 rounded-md bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:bg-blue-50 text-center'
                   value={section.sectionTitle}
                   onChange={(event) => {
                     onFormInput(sectionIndex, -1, event)
@@ -674,7 +669,7 @@ const AddCourse = () => {
                       <div className='lectures' key={index}>
                         <div>
                           <input
-                            className='inputClassSmallDiv'
+                            className='w-80 p-2 border border-gray-300 rounded-md bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:bg-blue-50 text-center'
                             value={element.title}
                             name='title'
                             onChange={(event) => {
@@ -685,7 +680,7 @@ const AddCourse = () => {
                         </div>
                         <div>
                           <input
-                            className='inputClassSmallDiv'
+                            className='w-80 p-2 border border-gray-300 rounded-md bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:bg-blue-50 text-center'
                             value={element.description}
                             name='description'
                             onChange={(event) => {
@@ -719,7 +714,7 @@ const AddCourse = () => {
             </div>
           )
         })}
-        <div className='addSec'>
+        <div className='w-1/10 mt-4'>
           <button
             className='bg-blue-500 hover:bg-blue-700 text-white font-light py-2 px-5 rounded'
             onClick={() => {
@@ -733,7 +728,7 @@ const AddCourse = () => {
       <div className='priceSection'>
         <div className='priceSec'>
           <input
-            className='inputClass'
+            className='w-96 p-2 border border-gray-300 rounded-md bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:bg-blue-50 text-center'
             value={mainForm.coursePrice}
             onChange={(event) => {
               onFormInput(-5, -5, event)
@@ -743,12 +738,12 @@ const AddCourse = () => {
         </div>
       </div>
       <div className='line'></div>
-      <div className='submit'>
+      <div className='ml-8'>
         <button
-          className='bg-blue-500 hover:bg-blue-700 text-white font-light py-2 px-5 rounded'
+          className='bg-green-500 hover:bg-green-600 text-white font-light py-2 px-5 rounded'
           type='submit'
           placeholder='Submit'>
-          Submit
+          Create Course
         </button>
       </div>
       <div>{}</div>

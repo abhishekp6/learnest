@@ -27,6 +27,11 @@ const CustomUploadButton = (props) => {
     event.preventDefault()
     console.log(event.target.files[0], 'Onchange')
     setFile(event.target.files[0])
+
+    const fileName = event.target.files[0].name
+    const fileNameElement = document.getElementById('file-name')
+    fileNameElement.innerText = fileName
+    fileNameElement.classList.remove('hidden')
   }
 
   const handleSubmit = async (e) => {
@@ -73,8 +78,16 @@ const CustomUploadButton = (props) => {
 
   return (
     <>
-      <input type='file' onChange={handleOnChange} />
-      <button onClick={handleSubmit}>Upload</button>
+      <label
+        htmlFor='file-upload'
+        className='relative cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded inline-flex items-center mr-2'>
+        <span>Choose File</span>
+        <input id='file-upload' type='file' className='hidden' onChange={handleOnChange} />
+      </label>
+      <span id='file-name' className='hidden'></span>
+      <button onClick={handleSubmit} className='bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded'>
+        Upload
+      </button>
     </>
   )
 }
