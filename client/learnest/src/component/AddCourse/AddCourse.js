@@ -651,10 +651,10 @@ const AddCourse = () => {
         </div>
       </div>
       <div className='line'></div>
-      <div className='section'>
+      <div className='course-section'>
         {mainForm.course.map((section, sectionIndex) => {
           return (
-            <div key={sectionIndex}>
+            <div key={sectionIndex} className='section-lt'>
               {returnLine(sectionIndex)}
               <div className='sectionTitle'>
                 <input
@@ -721,7 +721,7 @@ const AddCourse = () => {
         })}
         <div className='addSec'>
           <button
-            className='buttonClass'
+            className='bg-blue-500 hover:bg-blue-700 text-white font-light py-2 px-5 rounded'
             onClick={() => {
               addSection()
             }}>
@@ -744,7 +744,10 @@ const AddCourse = () => {
       </div>
       <div className='line'></div>
       <div className='submit'>
-        <button className='buttonClass' type='submit' placeholder='Submit'>
+        <button
+          className='bg-blue-500 hover:bg-blue-700 text-white font-light py-2 px-5 rounded'
+          type='submit'
+          placeholder='Submit'>
           Submit
         </button>
       </div>
