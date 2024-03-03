@@ -1,41 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-#popup-1 .popup-content{
+#popup-1 .popup-content {
     height: 96vh;
     width: 98%;
     top: 1vh;
     left: 1rem;
 }
+
 .popup-content {
     margin: auto;
     background: rgb(255, 255, 255);
     width: 50%;
     padding: 5px;
-  }
-  .popup-arrow {
+}
+
+.popup-arrow {
     color: rgb(255, 255, 255);
-  }
-  [role='tooltip'].popup-content {
+}
+
+[role='tooltip'].popup-content {
     width: 200px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
-  }
-  
-  .popup-overlay {
-    background: rgba(0, 0, 0, 0.5);
-  }
-  [data-popup='tooltip'].popup-overlay {
-    background: transparent;
-  }
+}
 
-.header{
-    background-color: #007bff;
+.popup-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+[data-popup='tooltip'].popup-overlay {
+    background: transparent;
+}
+
+.header {
     height: 24vh;
     border-radius: 5px;
     margin: 1vh;
     padding-left: 1.2%;
 }
 
-.heading{
+.heading {
     font-family: 'Poppins', sans-serif;
     color: white;
     height: 13vh;
@@ -44,27 +47,27 @@
     padding-top: 2.5vh;
 }
 
-.desc{
+.desc {
     font-family: 'Poppins', sans-serif;
     color: white;
     font-size: 1.1rem;
 }
 
-.midSection{
+.midSection {
     display: grid;
     grid-template-columns: 49.5% 1% 49.5%;
     margin: 1vh;
     color: rgb(64, 64, 64);
 }
 
-.learning{
+.learning {
     height: fit-content;
     padding: 10px;
     display: grid;
     grid-template-columns: 50% 50%;
 }
 
-.lesson{
+.lesson {
     text-align: left;
     height: fit-content;
     margin-left: 1rem;
@@ -76,17 +79,17 @@
     font-size: 0.9rem;
 }
 
-.lessonColLeft{
+.lessonColLeft {
     height: fit-content;
     width: 100%;
 }
 
-.lessonColRight{
+.lessonColRight {
     height: fit-content;
     width: 100%;
 }
 
-.preReq{
+.preReq {
     height: fit-content;
     padding-left: 10px;
     padding-top: 10px;
@@ -94,7 +97,7 @@
     grid-template-columns: 50% 50%;
 }
 
-.preRequisite{
+.preRequisite {
     text-align: left;
     height: fit-content;
     margin-left: 1rem;
@@ -106,21 +109,21 @@
     font-size: 0.9rem;
 }
 
-.preReqColLeft{
+.preReqColLeft {
     height: fit-content;
     width: 100%;
 }
 
-.preReqColRight{
+.preReqColRight {
     height: fit-content;
     width: 100%;
 }
 
-.point{
+.point {
     display: flex;
 }
 
-.midHeadL{
+.midHeadL {
     height: 8vh;
     line-height: 8vh;
     margin-left: 1rem;
@@ -129,7 +132,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.midHeadR{
+.midHeadR {
     height: 8vh;
     line-height: 8vh;
     margin-left: 1rem;
@@ -138,24 +141,24 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.midSecLeft{
+.midSecLeft {
     border: solid lightgrey 1px;
     border-radius: 10px;
 }
 
-.midSecRight{
+.midSecRight {
     border: solid lightgrey 1px;
     border-radius: 10px;
 }
 
-.content{
+.content {
     height: fit-content;
     background-color: #f4f4f4;
     margin: 1vh;
     border-radius: 5px;
 }
 
-.contentHeading{
+.contentHeading {
     font-family: 'Poppins', sans-serif;
     color: rgb(64, 64, 64);
     height: 12vh;
@@ -166,19 +169,19 @@
     text-align: center;
 }
 
-.accordianDiv{
+.accordianDiv {
     width: 50%;
     position: relative;
     left: 23rem;
     padding-bottom: 19vh;
 }
 
-.linkToVideo:hover{
+.linkToVideo:hover {
     color: rgb(0, 132, 255);
     cursor: pointer;
 }
 
-.payment-btn{
+.payment-btn {
     border: solid 2px #FFFFFF;
     border-radius: 4px;
     padding: 5px 20px;
