@@ -7,11 +7,13 @@ import ViewAllCourses from './ViewAllCourses/ViewAllCourses'
 import Homepage from './Homepage/Homepage'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import config from '../config/SecretConfig'
+import Header from '../Utilities/Header/Header'
 
 const LandingPage = () => {
   return (
     <GoogleOAuthProvider clientId={config.OAUTH_CLIENT_ID}>
       <div>
+        <Header />
         <Routes>
           <Route path='' element={<Homepage />} />
           <Route path='/add/course' element={<AddCourse />} />
