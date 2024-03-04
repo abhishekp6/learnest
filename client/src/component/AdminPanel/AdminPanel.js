@@ -39,7 +39,7 @@ const AdminPanel = () => {
   }
 
   return (
-    <div className='adminContainer'>
+    <div className='h-screen'>
       <div className='adminNavbar'>Welcome to Admin&apos;s Den</div>
       <div className='admin-center'>
         <div>

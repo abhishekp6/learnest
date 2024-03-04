@@ -22,7 +22,7 @@ const ViewAllCourses = () => {
   }, [])
 
   return (
-    <div className='ml-6 mr-6'>
+    <div className='ml-6 mr-6 h-screen'>
       <div className='bg-blue-500 text-white py-4 px-6 rounded-t-lg mb-8 mt-6 text-center'>
         <h2 className='text-4xl mb-2'>Course Catalog</h2>
       </div>

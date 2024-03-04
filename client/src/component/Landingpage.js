@@ -5,9 +5,12 @@ import AddCourse from './AddCourse/AddCourse'
 import CoursePage from './CoursePage/CoursePage'
 import ViewAllCourses from './ViewAllCourses/ViewAllCourses'
 import Homepage from './Homepage/Homepage'
+import AboutPage from './About/About'
+import ContactPage from './Contact/Contact'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import config from '../config/SecretConfig'
 import Header from '../Utilities/Header/Header'
+import Footer from '../Utilities/Footer/Footer'
 
 const LandingPage = () => {
   return (
@@ -21,7 +24,10 @@ const LandingPage = () => {
           <Route path='/admin' element={<AdminPanel />} />
           <Route path='/course/:courseId' element={<CoursePage />} />
           <Route path='/view/all' element={<ViewAllCourses />} />
+          <Route path='/about' element={<AboutPage />} />
+          <Route path='/contact' element={<ContactPage />} />
         </Routes>
+        <Footer />
       </div>
     </GoogleOAuthProvider>
   )

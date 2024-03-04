@@ -105,12 +105,20 @@ const Header = () => {
       </h1>
       <ul className='flex items-center space-x-4'>
         <li>
-          <a href='' className='text-gray-800 hover:text-gray-600'>
+          <a
+            onClick={() => {
+              navigate('/about')
+            }}
+            className='text-gray-800 hover:text-gray-600 cursor-pointer'>
             About
           </a>
         </li>
         <li>
-          <a href='' className='text-gray-800 hover:text-gray-600'>
+          <a
+            onClick={() => {
+              navigate('/contact')
+            }}
+            className='text-gray-800 hover:text-gray-600 cursor-pointer'>
             Contact
           </a>
         </li>

@@ -113,7 +113,7 @@ const CoursePage = () => {
   }
 
   return (
-    <div>
+    <div className='h-screen'>
       <div className='header bg-blue-500'>
         <div className='heading'>{courseData.courseTitle}</div>
         <div className='desc'>{courseData.courseOverView}</div>

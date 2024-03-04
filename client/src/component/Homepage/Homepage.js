@@ -56,12 +56,6 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-
-      <footer>
-        <div className='container'>
-          <p>&copy; 2024 Course Platform. All rights reserved.</p>
-        </div>
-      </footer>
     </div>
   )
 }
