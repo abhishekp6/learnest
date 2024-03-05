@@ -740,7 +740,7 @@ const AddCourse = () => {
       <div className='line'></div>
       <div className='ml-8'>
         <button
-          className='bg-green-500 hover:bg-green-600 text-white font-light py-2 px-5 rounded'
+          className='bg-green-500 hover:bg-green-600 text-white font-light py-2 px-5 rounded mb-12'
           type='submit'
           placeholder='Submit'>
           Create Course
