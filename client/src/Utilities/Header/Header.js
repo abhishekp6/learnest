@@ -10,7 +10,7 @@ const Header = () => {
   let navigate = useNavigate()
   const [profile, setProfile] = useState(null)
   const [loggedIn, setLoggedIn] = useState(false)
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
     if (loggedIn) {
@@ -43,6 +43,7 @@ const Header = () => {
       console.log(codeResponse, 'Initial Login')
       localStorage.setItem('accessToken', codeResponse.access_token)
       setLoggedIn(true)
+      setIsOpen(false)
     },
     onError: (error) => console.log('Login Failed:', error),
   })
@@ -82,7 +83,6 @@ const Header = () => {
   }
 
   const toggleDropdown = () => {
-    console.log('Toggledriopkns', isOpen)
     setIsOpen(!isOpen)
   }
 
