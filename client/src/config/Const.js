@@ -1,13 +1,13 @@
 const SLIDES = [
-  'https://img-b.udemycdn.com/course/240x135/625204_436a_3.jpg',
-  'https://img-b.udemycdn.com/course/240x135/1565838_e54e_18.jpg',
-  'https://img-b.udemycdn.com/course/240x135/965528_737d_7.jpg',
-  'https://img-b.udemycdn.com/course/240x135/625204_436a_3.jpg',
-  'https://img-b.udemycdn.com/course/240x135/1565838_e54e_18.jpg',
-  'https://img-b.udemycdn.com/course/240x135/965528_737d_7.jpg',
-  'https://img-b.udemycdn.com/course/240x135/625204_436a_3.jpg',
-  'https://img-b.udemycdn.com/course/240x135/1565838_e54e_18.jpg',
-  'https://img-b.udemycdn.com/course/240x135/965528_737d_7.jpg',
+  'https://miro.medium.com/v2/resize:fit:2000/format:webp/1*8bPiDNL1K1ZdK9O_T5IVKw.png',
+  'https://www.freecodecamp.org/news/content/images/size/w2000/2020/08/rust-2.jpg',
+  'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20230703144619/CPP-Language.png',
+]
+
+const HERO_SEC = [
+  'https://foyr.com/learn/wp-content/uploads/2022/01/quality-content-for-inbound-marketing.png',
+  'https://www.outreachlabs.com/wp-content/uploads/2022/10/highqualitycontent3.png',
+  'https://cdn2.iconfinder.com/data/icons/greenline/512/check-1024.png',
 ]
 
 const OPTIONS = {
@@ -17,4 +17,4 @@ const OPTIONS = {
   dragFree: true,
 }
 
-export { SLIDES, OPTIONS }
+export { SLIDES, HERO_SEC, OPTIONS }

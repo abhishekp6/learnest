@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import EmblaCarousel from '../../Utilities/Carousel/EmblaCarousel'
 import './Homepage.css'
-import { SLIDES, OPTIONS } from '../../config/Const'
+import { SLIDES, HERO_SEC, OPTIONS } from '../../config/Const'
 
 const Homepage = () => {
   const navigate = useNavigate()
@@ -35,7 +35,7 @@ const Homepage = () => {
       <div className='body-section'>
         <h2 className='section-header'>Why Choose Us</h2>
         <div className='section'>
-          <img src={SLIDES[0]} alt='Image 1' className='image' />
+          <img src={HERO_SEC[0]} alt='Image 1' className='image' />
           <div className='text'>
             <h3>Quality Content</h3>
             <p>Our courses offer top-notch content curated by industry experts.</p>
@@ -46,10 +46,10 @@ const Homepage = () => {
             <h3>Flexible Learning</h3>
             <p>Learn at your own pace with our flexible scheduling options.</p>
           </div>
-          <img src={SLIDES[1]} alt='Image 2' className='image' />
+          <img src={HERO_SEC[1]} alt='Image 2' className='image' />
         </div>
         <div className='section'>
-          <img src={SLIDES[2]} alt='Image 3' className='image' />
+          <img src={HERO_SEC[2]} alt='Image 3' className='image' />
           <div className='text'>
             <h3>Expert Instructors</h3>
             <p>Learn from the best with our team of experienced instructors.</p>
