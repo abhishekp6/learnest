@@ -51,8 +51,8 @@ const Homepage = () => {
         <div className='section'>
           <img src={HERO_SEC[2]} alt='Image 3' className='image' />
           <div className='text'>
-            <h3>Expert Instructors</h3>
-            <p>Learn from the best with our team of experienced instructors.</p>
+            <h3>Expert Educators</h3>
+            <p>Learn from the best with our team of experienced Educators.</p>
           </div>
         </div>
       </div>
