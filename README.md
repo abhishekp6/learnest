@@ -58,6 +58,7 @@ Validations have been added on schema level for each field.
           GET_CUSTOM_VIDEO_UPLOAD_TOKEN_URL=
           RAZORPAY_KEY_ID=
           RAZORPAY_KEY_SECRET=
+          VIDEO_API_KEY=
 - Step 9: cd ../client/
 - Step 10: Create .env file
 - Step 11: Populate .env file with the following variables:
