@@ -8,13 +8,13 @@ import Homepage from './Homepage/Homepage'
 import AboutPage from './About/About'
 import ContactPage from './Contact/Contact'
 import { GoogleOAuthProvider } from '@react-oauth/google'
-import config from '../config/SecretConfig'
 import Header from '../Utilities/Header/Header'
 import Footer from '../Utilities/Footer/Footer'
 
 const LandingPage = () => {
   return (
-    <GoogleOAuthProvider clientId={config.OAUTH_CLIENT_ID}>
+    // eslint-disable-next-line no-undef
+    <GoogleOAuthProvider clientId={process.env.REACT_APP_OAUTH_CLIENT_ID}>
       <div>
         <Header />
         <Routes>

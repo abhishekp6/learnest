@@ -12,7 +12,6 @@ import Typography from '@mui/material/Typography'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
 import environment from '../../config/Config'
-import config from '../../config/SecretConfig'
 import './CoursePage.css'
 
 import Popup from '../../Utilities/Popup/Popup'
@@ -63,7 +62,8 @@ const CoursePage = () => {
     let amountInPaisa = courseData?.coursePrice ? courseData?.coursePrice * 100 : 0
 
     const options = {
-      key: config.RAZORPAY_KEY_ID,
+      // eslint-disable-next-line no-undef
+      key: process.env.REACT_APP_RAZORPAY_KEY_ID,
       amount: 0,
       name: '',
       description: '',
