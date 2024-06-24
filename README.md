@@ -5,6 +5,7 @@
 <img alt="Express" src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB" height="25px"/>
 <img alt="Tailwidcss" src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" height="25px"/>
 <img alt="git" src="https://img.shields.io/badge/-Git-F05032?style=flat-square&logo=git&logoColor=white" height="25px"/>
+<img alt="git" src="https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white" height="25px"/>
 </p>
 
 # Learnest
@@ -30,6 +31,7 @@ Learnest is a web application designed for individual course creators. It enable
 - **Video Storage**: api.video
 - **Payment Gateway**: Razorpay
 - **Authentication**: Google OAuth
+- **Code Lint**: Eslint
 
 ## Architecture
 ![Learnest drawio](https://github.com/abhishekp6/learnest/assets/53012981/03990a76-5300-4ea6-ac6e-36b4a657c53f)
