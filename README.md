@@ -119,12 +119,12 @@ Validations have been added on schema level for each field.
 
   Wallah! That's all, you are all set to contribute.
 
-  PS: Will be dockerizing the application soon. Contributions are welcome.
-
 ## Contributions & Support
 
-The project has a scope for improvement at multiple levels and devs are welcome to contribute. Following are the areas where you can contribute:
-- Setting up authorization flow in the project. (Authentication is already in place).
-- Minor UI level issues on the course page while opening video popups.
-
-- For Contributions, please raise a PR to the 'dev' branch.
+The project has a scope for improvement and devs are welcome to contribute. Please look into issues section to pick existing issues.
+<br />
+<br />
+For contributions, raise PR to dev branch. Post review and sanity the same will be merged to master.
+<br />
+<br />
+Drop a &#9733; if you find the project useful.
