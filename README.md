@@ -85,7 +85,8 @@ Validations have been added on schema level for each field.
   touch config.env
   cd ..
   ```
-- Step 8: Populate config.env with the following variables:
+- Step 8: Populate config.env with the following variables
+  ```Bash
           NODE_ENV=development
           PORT=
           MONGO_URI=
@@ -93,6 +94,7 @@ Validations have been added on schema level for each field.
           RAZORPAY_KEY_ID=
           RAZORPAY_KEY_SECRET=
           VIDEO_API_KEY=
+  ```
 - Step 9
   ```Bash
   cd ../client/
@@ -100,10 +102,12 @@ Validations have been added on schema level for each field.
 - Step 10
   ```Bash
   touch .env
+  ```
+- Step 11: Populate .env file with the following variables
   ```Bash
-- Step 11: Populate .env file with the following variables:
-            REACT_APP_RAZORPAY_KEY_ID=
-            REACT_APP_OAUTH_CLIENT_ID=
+  REACT_APP_RAZORPAY_KEY_ID=
+  REACT_APP_OAUTH_CLIENT_ID=
+  ```
 - Step 12
   ```Bash
   npm run dev
@@ -114,6 +118,8 @@ Validations have been added on schema level for each field.
   ```
 
   Wallah! That's all, you are all set to contribute.
+
+  PS: Will be dockerizing the application soon. Contributions are welcome.
 
 ## Contributions & Support
 
