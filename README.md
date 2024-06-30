@@ -55,13 +55,36 @@ Validations have been added on schema level for each field.
 ## Project Setup
 
 - Prerequisites: Node 20.X
-- Step 1: Clone the repository on your local machine.
-- Step 2: Checkout to 'dev' branch.
-- Step 3: cd client/
-- Step 4: npm i
-- Step 5: cd ../server/
-- Step 6: npm i
-- Step 7: add config/config.env file
+- Step 1
+  ```Bash
+  git clone https://github.com/abhishekp6/learnest.git
+  ```
+- Step 2
+  ```Bash
+  git checkout dev
+  ```
+- Step 3
+  ```Bash
+  cd client/
+  ```
+- Step 4
+  ```Bash
+  npm i
+  ```
+- Step 5
+  ```Bash
+  cd ../server/
+  ```
+- Step 6
+  ```Bash
+  npm i
+  ```
+- Step 7
+  ```Bash
+  cd config/
+  touch config.env
+  cd ..
+  ```
 - Step 8: Populate config.env with the following variables:
           NODE_ENV=development
           PORT=
@@ -70,12 +93,25 @@ Validations have been added on schema level for each field.
           RAZORPAY_KEY_ID=
           RAZORPAY_KEY_SECRET=
           VIDEO_API_KEY=
-- Step 9: cd ../client/
-- Step 10: Create .env file
+- Step 9
+  ```Bash
+  cd ../client/
+  ```
+- Step 10
+  ```Bash
+  touch .env
+  ```Bash
 - Step 11: Populate .env file with the following variables:
             REACT_APP_RAZORPAY_KEY_ID=
             REACT_APP_OAUTH_CLIENT_ID=
-- Step 12: run 'npm run start' in client folder and 'npm run dev' in server folder.
+- Step 12
+  ```Bash
+  npm run dev
+  ```
+  New terminal move to client folder and run below
+  ```Bash
+  npm run start
+  ```
 
   Wallah! That's all, you are all set to contribute.
 
