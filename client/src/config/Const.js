@@ -1,6 +1,6 @@
 const SLIDES = [
   'https://miro.medium.com/v2/resize:fit:2000/format:webp/1*8bPiDNL1K1ZdK9O_T5IVKw.png',
-  'https://www.freecodecamp.org/news/content/images/size/w2000/2020/08/rust-2.jpg',
+  'https://www.rust-lang.org/static/images/rust-social-wide.jpg',
   'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20230703144619/CPP-Language.png',
 ]
 
